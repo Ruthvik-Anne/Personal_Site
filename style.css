@@ -1,0 +1,40 @@
+a {
+  color: black;
+}
+
+body {
+  margin: 10px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.name {
+  font-family: 'Tilt Prism';
+  font-size: 60px;
+}
+
+hr {
+  height: 2px;
+  background-color: lightgrey;
+}
+
+.edu {
+  font-family: cursive;
+}
+
+.talents {
+  font-family: cursive;
+}
+
+h3 {
+  text-decoration: underline;
+  font-size: 40px;
+  font-family: 'Dongle', sans-serif;
+}
+h4{
+  font-size: 35px;
+  font-family: 'Dongle', sans-serif;
+}
