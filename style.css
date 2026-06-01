@@ -1,141 +1,222 @@
 /*
-  Fonts loaded from Google Fonts (all in index.html):
-  - Dongle 300/400        → body text
-  - Nunito 400/600        → body fallback
-  - Orbitron 700          → .name
-  - Share Tech Mono       → .name fallback
-  - Tilt Prism            → .section-title
-  - Rajdhani 500/600      → .section-title fallback
-  - Dancing Script 500    → .edu, .talents
+  Fonts (loaded in index.html):
+  Dongle / Nunito · Orbitron / Share Tech Mono · Tilt Prism / Rajdhani · Dancing Script
 */
 
-/* ── Base ─────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
+/* ══════════════════════════════════════════════
+   BASE
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Dongle', 'Nunito';
+  font-size: clamp(18px, 2vw, 22px);
+  width: 96vw;
+  margin: 0 auto;
+  padding: clamp(24px, 3vw, 48px) clamp(20px, 4vw, 52px);
+  background: #ffffff;
+  color: #1a1a2e;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Soft blobs so glassmorphism has something to blur against */
+body::before {
+  content: '';
+  position: fixed;
+  width: clamp(300px, 40vw, 600px);
+  height: clamp(300px, 40vw, 600px);
+  background: radial-gradient(circle, #3a86ff 0%, transparent 70%);
+  border-radius: 50%;
+  top: -15%;
+  left: -10%;
+  opacity: 0.07;
+  z-index: -1;
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed;
+  width: clamp(250px, 35vw, 500px);
+  height: clamp(250px, 35vw, 500px);
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -10%;
+  right: -8%;
+  opacity: 0.07;
+  z-index: -1;
+  pointer-events: none;
+}
 
 a { color: #3a86ff; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-body {
-  font-family: 'Dongle', 'Nunito';
-  font-size: clamp(16px, 2vw, 20px);
-  width: 96vw;
-  margin: 0 auto;
-  padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 40px);
-  color: #222;
-}
-
 img {
-  width: clamp(80px, 15vw, 200px);
-  height: clamp(80px, 15vw, 200px);
+  width: clamp(80px, 12vw, 200px);
+  height: clamp(80px, 12vw, 200px);
   object-fit: cover;
 }
 
 hr {
   border: none;
-  height: 2px;
-  background-color: lightgrey;
-  margin: clamp(14px, 2.5vw, 24px) 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d0d0e8, transparent);
+  margin: clamp(20px, 3vw, 36px) 0;
 }
 
 h3 {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(24px, 4vw, 40px);
+  font-size: clamp(28px, 3.5vw, 44px);
   text-decoration: underline;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 h4 {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(20px, 3vw, 35px);
-  margin: 0 0 6px;
+  font-size: clamp(22px, 2.8vw, 36px);
+  margin: 0 0 8px;
 }
 
-/* ── Header ───────────────────────────────────── */
-.header-table        { width: 100%; }
-.header-avatar-td    { width: 90px; vertical-align: top; }
+/* ══════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════ */
+.header-table      { width: 100%; }
+.header-avatar-td  { width: 110px; vertical-align: top; }
 
 .profile-img {
-  width: 80px;
-  height: 80px;
+  width: clamp(80px, 9vw, 120px);
+  height: clamp(80px, 9vw, 120px);
   object-fit: cover;
+  border-radius: 50%;
+  animation: floatAvatar 5s ease-in-out infinite;
+  box-shadow: 0 8px 32px rgba(58, 134, 255, 0.18);
+}
+
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
 .name {
   font-family: 'Orbitron', 'Share Tech Mono';
-  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 700;
-  margin: 0 0 4px;
   letter-spacing: 0.04em;
-  line-height: 1.2;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, #1a1a2e 40%, #3a86ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nameGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow {
+  from { filter: drop-shadow(0 0 0px rgba(58,134,255,0)); }
+  to   { filter: drop-shadow(0 0 8px rgba(58,134,255,0.35)); }
 }
 
 .tagline {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   color: #555;
-  margin: 4px 0 8px;
+  margin: 4px 0 10px;
 }
 
 .bio-text {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   color: #333;
-  margin: 0 0 6px;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .social-links {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
-  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
 }
+.social-links a {
+  color: #3a86ff;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.social-links a:hover { color: #7c3aed; text-decoration: none; }
 
-/* ── Section titles ───────────────────────────── */
+/* ══════════════════════════════════════════════
+   SECTION TITLES
+══════════════════════════════════════════════ */
 h3.section-title {
   font-family: 'Tilt Prism', 'Rajdhani';
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   text-decoration: none;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  color: #1a1a2e;
 }
 
-/* ── Project cards ────────────────────────────── */
-/* EDIT: Change 260px below to make cards wider/narrower.
-   Cards auto-wrap to next row when they no longer fit.
-   No other change needed when you add more cards in index.html. */
+/* ══════════════════════════════════════════════
+   PROJECT CARDS — glassmorphism + 3D hover
+══════════════════════════════════════════════ */
+/* EDIT: Change 260px to make cards wider/narrower.
+   Grid auto-wraps — no other change needed when adding cards. */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: clamp(10px, 2vw, 18px);
+  gap: clamp(14px, 2vw, 24px);
 }
 
 .card {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: clamp(12px, 2vw, 18px);
-  background: #fafafa;
-  transition: box-shadow 0.2s;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(180, 190, 255, 0.35);
+  border-radius: 16px;
+  padding: clamp(16px, 2vw, 24px);
+  box-shadow: 0 4px 24px rgba(58, 134, 255, 0.08),
+              0 1px 4px rgba(0,0,0,0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: cardIn 0.5s ease both;
 }
-.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.12s; }
+.card:nth-child(3) { animation-delay: 0.19s; }
+.card:nth-child(4) { animation-delay: 0.26s; }
+.card:nth-child(5) { animation-delay: 0.33s; }
+.card:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: perspective(800px) rotateX(12deg) translateY(28px); }
+  to   { opacity: 1; transform: perspective(800px) rotateX(0deg) translateY(0); }
+}
+
+.card:hover {
+  transform: perspective(800px) rotateX(-4deg) rotateY(3deg) translateY(-8px);
+  box-shadow: 0 20px 48px rgba(58, 134, 255, 0.16),
+              0 4px 12px rgba(0,0,0,0.08);
+}
 
 .card h4 {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   font-weight: 700;
   color: #1a1a2e;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
+
 .card p {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
   color: #444;
-  line-height: 1.5;
-  margin: 0 0 10px;
+  line-height: 1.6;
+  margin: 0 0 12px;
 }
 
 .published-label { font-weight: 400; color: #137333; }
 
 .card-status {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
   color: #555;
   margin-top: 8px;
   display: inline-block;
@@ -143,95 +224,123 @@ h3.section-title {
 
 .card-link {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
   color: #3a86ff;
   margin-top: 8px;
   display: inline-block;
+  font-weight: 600;
+  transition: color 0.2s;
 }
-.card-link:hover { text-decoration: underline; }
+.card-link:hover { color: #7c3aed; text-decoration: none; }
 
-/* ── Tags ─────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   TAGS
+══════════════════════════════════════════════ */
 .tag {
   font-family: 'Dongle', 'Nunito';
   display: inline-block;
-  background: #e8f0fe;
+  background: rgba(232, 240, 254, 0.85);
   color: #1a56db;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: clamp(0.7rem, 1.2vw, 0.82rem);
-  margin: 2px 2px 0 0;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: clamp(0.8rem, 1.2vw, 0.92rem);
+  margin: 3px 3px 0 0;
+  border: 1px solid rgba(58,134,255,0.15);
 }
-.tag.green { background: #e6f4ea; color: #137333; }
+.tag.green {
+  background: rgba(230, 244, 234, 0.85);
+  color: #137333;
+  border-color: rgba(19,115,51,0.15);
+}
 
-/* ── Status dots ──────────────────────────────── */
+/* ══════════════════════════════════════════════
+   STATUS DOTS
+══════════════════════════════════════════════ */
 .status-dot {
   display: inline-block;
-  width: 8px; height: 8px;
+  width: 9px; height: 9px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 6px;
   vertical-align: middle;
 }
-.dot-live { background: #34a853; }
-.dot-dev  { background: #fbbc04; }
+.dot-live { background: #34a853; box-shadow: 0 0 6px rgba(52,168,83,0.5); }
+.dot-dev  { background: #fbbc04; box-shadow: 0 0 6px rgba(251,188,4,0.5); }
 
-/* ── Skills ───────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   SKILLS
+══════════════════════════════════════════════ */
 .edu     { font-family: 'Dancing Script'; }
 .talents { font-family: 'Dancing Script'; }
 
 .talents h4.skills-subheading,
 .talents h4.skills-subheading-mt {
   font-family: 'Dongle', 'Nunito';
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: #333;
 }
-.skills-subheading    { margin: 0 0 8px; }
-.skills-subheading-mt { margin: 14px 0 8px; }
+.skills-subheading    { margin: 0 0 10px; }
+.skills-subheading-mt { margin: 18px 0 10px; }
 
-.skills-table { border-spacing: 0 6px; }
+.skills-table { border-spacing: 0 8px; width: 100%; }
 .skills-table td:first-child {
   font-family: 'Dongle', 'Nunito';
-  width: clamp(130px, 15vw, 180px);
-  font-size: clamp(0.85rem, 1.6vw, 1rem);
-  padding-right: 10px;
+  width: clamp(140px, 16vw, 200px);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  padding-right: 14px;
+  color: #333;
 }
 
 .bar-bg {
-  background: #eee;
-  border-radius: 4px;
-  height: 10px;
-  width: clamp(200px, 40vw, 480px);
+  background: rgba(230, 235, 255, 0.7);
+  border-radius: 8px;
+  height: 12px;
+  width: clamp(200px, 50vw, 600px);
   display: inline-block;
   vertical-align: middle;
+  overflow: hidden;
+  border: 1px solid rgba(58,134,255,0.1);
 }
 .bar-fill {
-  background: #3a86ff;
-  border-radius: 4px;
-  height: 10px;
+  background: linear-gradient(90deg, #3a86ff, #7c3aed);
+  border-radius: 8px;
+  height: 100%;
   display: block;
+  animation: barGrow 1.2s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes barGrow {
+  from { width: 0% !important; }
 }
 
-/* ── Education ────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   EDUCATION
+══════════════════════════════════════════════ */
 .edu ul {
   font-family: 'Dancing Script';
-  line-height: 2;
-  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-  padding-left: 20px;
+  line-height: 2.2;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  padding-left: 22px;
+  color: #333;
 }
 
-/* ── Footer ───────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
 .footer-text {
   font-family: 'Dongle', 'Nunito';
   color: #aaa;
-  font-size: clamp(0.72rem, 1.2vw, 0.85rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
   text-align: center;
 }
 
-/* ── Mobile ───────────────────────────────────── */
-@media (max-width: 480px) {
+/* ══════════════════════════════════════════════
+   MOBILE
+══════════════════════════════════════════════ */
+@media (max-width: 520px) {
   .header-table, .header-table tr, .header-table td {
     display: block;
     width: 100%;
   }
-  .header-avatar-td { margin-bottom: 10px; }
-  .projects-grid { grid-template-columns: 1fr; }
+  .header-avatar-td { margin-bottom: 14px; }
+  .projects-grid    { grid-template-columns: 1fr; }
+  .bar-bg           { width: 100%; }
 }
