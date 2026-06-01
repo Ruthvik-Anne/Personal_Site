@@ -24,16 +24,9 @@
       line-height: 1.7;
     }
 
-    /* ── Particle canvas ─────────────── */
-    #cv {
-      position: fixed; inset: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
-      filter: blur(90px) saturate(1.1);
-    }
-    body > * { position: relative; z-index: 1; }
+    
 
-    a { color: var(--accent); text-decoration: none; }
+    a { color: #a08060; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     hr {
