@@ -1,40 +1,60 @@
-a {
-  color: black;
-}
-
+/* ── Base ─────────────────────────────────────── */
+a { color: #3a86ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
 body {
-  margin: 10px;
-}
-
-img {
-  height: 200px;
-  width: 200px;
-}
-
-.name {
-  font-family: 'Tilt Prism';
-  font-size: 60px;
-}
-
-hr {
-  height: 2px;
-  background-color: lightgrey;
-}
-
-.edu {
-  font-family: cursive;
-}
-
-.talents {
-  font-family: cursive;
-}
-
-h3 {
-  text-decoration: underline;
-  font-size: 40px;
   font-family: 'Dongle', sans-serif;
+  font-size: 18px;
+  max-width: 860px;
+  margin: 10px auto;
+  padding: 14px 20px;
 }
-h4{
-  font-size: 35px;
-  font-family: 'Dongle', sans-serif;
-}
+img { height: 200px; width: 200px; }
+hr { height: 2px; background-color: lightgrey; border: none; margin: 20px 0; }
+h3 { text-decoration: underline; font-size: 40px; font-family: 'Dongle', sans-serif; }
+h4 { font-size: 35px; font-family: 'Dongle', sans-serif; }
+
+/* ── Header ───────────────────────────────────── */
+.header-table { width: 100%; max-width: 640px; }
+.header-avatar-td { width: 90px; }
+.profile-img { width: 80px; height: 80px; object-fit: cover; }
+.name { font-family: 'Orbitron', monospace; font-size: 2em; margin: 0; letter-spacing: 0.04em; }
+.tagline { color: #555; margin: 4px 0 8px; }
+.bio-text { margin: 0; color: #333; font-size: 0.95em; }
+.social-links { margin: 6px 0 0; font-size: 0.9em; }
+
+/* ── Section titles ───────────────────────────── */
+.section-title { font-family: 'Tilt Prism', cursive; font-size: 1.5em; margin-bottom: 8px; text-decoration: none; }
+
+/* ── Project cards ────────────────────────────── */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+.card { border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px 18px; background: #fafafa; transition: box-shadow 0.2s; }
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+.card h4 { margin: 0 0 6px; font-size: 1.1em; color: #1a1a2e; }
+.card p { margin: 0 0 10px; font-size: 0.95em; color: #444; line-height: 1.4; }
+.published-label { font-weight: 400; color: #137333; }
+.card-status { font-size: 0.82em; color: #555; margin-top: 8px; display: inline-block; }
+.card-link { font-size: 0.85em; color: #3a86ff; text-decoration: none; margin-top: 8px; display: inline-block; }
+.card-link:hover { text-decoration: underline; }
+
+/* ── Tags ─────────────────────────────────────── */
+.tag { display: inline-block; background: #e8f0fe; color: #1a56db; border-radius: 4px; padding: 2px 8px; font-size: 0.8em; margin: 2px 2px 0 0; }
+.tag.green { background: #e6f4ea; color: #137333; }
+
+/* ── Status dots ──────────────────────────────── */
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+.dot-live { background: #34a853; }
+.dot-dev  { background: #fbbc04; }
+
+/* ── Skills ───────────────────────────────────── */
+.edu  { font-family: cursive; }
+.talents { font-family: cursive; }
+.skills-subheading    { margin-bottom: 8px; }
+.skills-subheading-mt { margin: 14px 0 8px; }
+.skills-table td:first-child { width: 130px; }
+.bar-bg { background: #eee; border-radius: 4px; height: 10px; width: 160px; display: inline-block; vertical-align: middle; }
+.bar-fill { background: #3a86ff; border-radius: 4px; height: 10px; display: block; }
+.edu ul { line-height: 2; }
+
+/* ── Footer ───────────────────────────────────── */
+.footer-text { color: #aaa; font-size: 0.8em; text-align: center; }
