@@ -1,168 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruthvik Anne</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&family=Nunito:wght@400;600&family=Orbitron:wght@700&family=Share+Tech+Mono&family=Tilt+Prism&family=Rajdhani:wght@500;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="Description" content="Ruthvik Anne — CSE Student, AI Builder">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="java.js"></script>
-  <title>Ruthvik Anne</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Outfit:wght@400;500;600;700&family=Exo+2:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="java.js"></script>
 </head>
 <body>
 
-  <!-- Header -->
-  <table class="header-table" cellspacing="10px">
-    <tr>
-      <td class="header-avatar-td">
-        <img class="w3-circle profile-img" src="Images/Logo.png" alt="Ruthvik Anne">
-      </td>
-      <td>
-        <h1 class="name">Ruthvik Anne</h1>
-        <p class="tagline"><em>2nd Year B.Tech CSE · Siddhartha Academy of Higher Education</em></p>
-        <p class="bio-text">
-          Building autonomous AI systems and shipping real products.
-          Interested in AI agents, systems programming, and cryptography.
-        </p>
-        <p class="social-links">
-          <a href="https://github.com/Ruthvik-Anne" target="_blank">GitHub</a> &nbsp;·&nbsp;
-          <a href="https://huggingface.co/racoon2468" target="_blank">HuggingFace</a> &nbsp;·&nbsp;
-          <a href="mailto:25eu04202@siddhartha.edu.in">Email</a>
-        </p>
-      </td>
-    </tr>
-  </table>
+  <!-- Fixed background — stays still while panels scroll -->
+  <div id="bg-fixed"></div>
 
-  <hr>
+  <div id="scene">
 
-  <!-- Projects -->
-  <div>
-    <h3 class="section-title">Projects</h3>
-    <!-- ═══════════════════════════════════════════════
-         ADD NEW PROJECT CARDS HERE
-         Copy one full <div class="card">...</div> block,
-         paste it inside this .projects-grid div.
-         Grid auto-wraps — no CSS change needed.
-    ═══════════════════════════════════════════════ -->
-    <div class="projects-grid">
-
-      <!-- ── CARD 1 ── -->
-      <div class="card">
-        <h4>NEXUS — Autonomous AI Agent System</h4>
-        <p>Manager-worker DAG executor with Qwen3-14B orchestrator and specialised qwen3:1.7b workers.
-           Includes a LOOP skill engine, ChromaDB memory, and fine-tuned model.</p>
-        <span class="tag">Python</span>
-        <span class="tag">Ollama</span>
-        <span class="tag">ChromaDB</span>
-        <span class="tag">Qwen3</span>
-        <br>
-        <span class="card-status">
-          <span class="status-dot dot-live"></span>Running on self-hosted Ubuntu server
-        </span>
-        <br>
-        <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
+  <!-- HEADER -->
+  <div class="panel-header">
+  <div class="header">
+    <img class="profile-img" src="Images/Logo.png" alt="Ruthvik Anne">
+    <div>
+      <h1 class="name">Ruthvik Anne</h1>
+      <p class="tagline">2nd Year B.Tech CSE · Siddhartha Academy of Higher Education</p>
+      <p class="bio-text">Building autonomous AI systems and shipping real products. Interested in AI agents, systems programming, and cryptography.</p>
+      <div class="social-links">
+        <a href="https://github.com/Ruthvik-Anne" target="_blank">GitHub</a>
+        <a href="https://huggingface.co/racoon2468" target="_blank">HuggingFace</a>
+        <a href="mailto:25eu04202@siddhartha.edu.in">Email</a>
       </div>
-
-      <!-- ── CARD 2 ── -->
-      <div class="card">
-        <h4>NEXUS Fine-tune · <span class="published-label">Published</span></h4>
-        <p>Fine-tuned Qwen3-14B LoRA adapter for agentic reasoning. Trained on a curated 80K-row
-           SFT dataset with genuine chain-of-thought blocks.</p>
-        <span class="tag green">HuggingFace</span>
-        <span class="tag">LoRA</span>
-        <span class="tag">Qwen3-14B</span>
-        <br>
-        <span class="card-status">
-          <span class="status-dot dot-live"></span>racoon2468/nexus-qwen3-14b-v2
-        </span>
-        <br>
-        <a class="card-link" href="https://huggingface.co/racoon2468/nexus-qwen3-14b-v2" target="_blank">→ HuggingFace</a>
-      </div>
-
-      <!-- ── CARD 3 ── -->
-      <div class="card">
-        <h4>nexus-v3-dataset · <span class="published-label">Published</span></h4>
-        <p>80K-row SFT dataset for agentic LLM training. Sourced from OpenThoughts, Bespoke-Stratos,
-           cybersecurity-qa, Hermes function-calling, and more. All rows verified for real thinking content.</p>
-        <span class="tag green">HuggingFace</span>
-        <span class="tag">JSONL</span>
-        <span class="tag">SFT</span>
-        <br>
-        <span class="card-status">
-          <span class="status-dot dot-live"></span>racoon2468/nexus-v3-dataset
-        </span>
-        <br>
-        <a class="card-link" href="https://huggingface.co/datasets/racoon2468/nexus-v3-dataset" target="_blank">→ HuggingFace</a>
-      </div>
-
-      <!-- ── CARD 4 ── -->
-      <div class="card">
-        <h4>Tapcard — Android NFC Business Card</h4>
-        <p>Share and receive business cards via NFC, QR, and Nearby Connections simultaneously.
-           ML Kit OCR scans physical cards. Gemini 2.0 Flash (BYOK) for smart parsing.</p>
-        <span class="tag">Kotlin</span>
-        <span class="tag">Jetpack Compose</span>
-        <span class="tag">NFC HCE</span>
-        <span class="tag">ML Kit</span>
-        <br>
-        <span class="card-status">
-          <span class="status-dot dot-dev"></span>Closed Tesing in PlayStore
-        </span>
-        <br>
-        <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
-      </div>
-
     </div>
   </div>
+  </div><!-- /panel-header -->
+  <div class="float-divider"></div>
+  <!-- PROJECTS — copy a .card block to add more -->
+  <div class="panel">
+  <h3 class="section-title">Projects</h3>
+  <div class="projects-grid">
 
-  <hr>
+    <!-- ── CARD 1 ── -->
+    <div class="card">
+      <h4>NEXUS — Autonomous AI Agent System</h4>
+      <p>Manager-worker DAG executor with Qwen3-14B orchestrator and specialised qwen3:1.7b workers. LOOP skill engine, ChromaDB memory, fine-tuned model.</p>
+      <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">ChromaDB</span><span class="tag">Qwen3</span>
+      <div class="card-status"><span class="dot dot-live"></span>Running on self-hosted Ubuntu server</div>
+      <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
+    </div>
 
-  <!-- Skills -->
-  <div class="talents">
-    <h3 class="section-title">Skills</h3>
-    <!-- ═══════════════════════════════════════════════
-         SKILLS — add a new <tr> row to add a skill.
-         Change the style="width:XX%" to set bar length.
-    ═══════════════════════════════════════════════ -->
-    <h4 class="skills-subheading">Programming</h4>
-    <table class="skills-table" cellspacing="6">
-      <tr><td>C# / .NET</td> <td><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></td></tr>
-      <tr><td>HTML / CSS</td><td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
-      <tr><td>SQL</td>       <td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
-      <tr><td>C / C++</td>   <td><div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div></td></tr>
-      <tr><td>Python</td>    <td><div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></td></tr>
-    </table>
+    <!-- ── CARD 2 ── -->
+    <div class="card">
+      <h4>NEXUS Fine-tune · <span class="published-label">Published</span></h4>
+      <p>Fine-tuned Qwen3-14B LoRA adapter for agentic reasoning. Trained on a curated 80K-row SFT dataset with genuine chain-of-thought blocks.</p>
+      <span class="tag green">HuggingFace</span><span class="tag">LoRA</span><span class="tag">Qwen3-14B</span>
+      <div class="card-status"><span class="dot dot-live"></span>racoon2468/nexus-qwen3-14b-v2</div>
+      <a class="card-link" href="https://huggingface.co/racoon2468/nexus-qwen3-14b-v2" target="_blank">→ HuggingFace</a>
+    </div>
 
-    <h4 class="skills-subheading-mt">AI / ML</h4>
-    <table class="skills-table" cellspacing="6">
-      <tr><td>LLM Fine-tuning</td><td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
-      <tr><td>Agent Systems</td>  <td><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></td></tr>
-      <tr><td>Ollama / vLLM</td>  <td><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></td></tr>
-    </table>
+    <!-- ── CARD 3 ── -->
+    <div class="card">
+      <h4>nexus-v3-dataset · <span class="published-label">Published</span></h4>
+      <p>80K-row SFT dataset for agentic LLM training. OpenThoughts, Bespoke-Stratos, cybersecurity-qa, Hermes function-calling. All rows verified for real thinking content.</p>
+      <span class="tag green">HuggingFace</span><span class="tag">JSONL</span><span class="tag">SFT</span>
+      <div class="card-status"><span class="dot dot-live"></span>racoon2468/nexus-v3-dataset</div>
+      <a class="card-link" href="https://huggingface.co/datasets/racoon2468/nexus-v3-dataset" target="_blank">→ HuggingFace</a>
+    </div>
+
+    <!-- ── CARD 4 ── -->
+    <div class="card">
+      <h4>Tapcard — Android NFC Business Card</h4>
+      <p>Share and receive cards via NFC, QR, and Nearby Connections simultaneously. ML Kit OCR scans physical cards. Gemini 2.0 Flash for smart parsing.</p>
+      <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">NFC HCE</span><span class="tag">ML Kit</span>
+      <div class="card-status"><span class="dot dot-dev"></span>In development · Play Store submission</div>
+      <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
+    </div>
+
+  </div>
+  </div><!-- /panel projects -->
+  <div class="float-divider"></div>
+  <!-- SKILLS — change width:XX% to adjust bar, add <tr> for new skill -->
+  <div class="panel">
+  <h3 class="section-title">Skills</h3>
+
+  <div class="skills-group">
+    <h4>Programming</h4>
+    <div class="skill-row"><span class="skill-label">C# / .NET</span> <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">HTML / CSS</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">SQL</span>        <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">C / C++</span>    <div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">Python</span>     <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></div>
   </div>
 
-  <hr>
-
-  <!-- Education -->
-  <div class="edu">
-    <h3 class="section-title">Education</h3>
-    <!-- ═══════════════════════════════════════════════
-         EDUCATION — add/remove <li> items here.
-    ═══════════════════════════════════════════════ -->
-    <ul>
-      <li>Siddhartha Academy of Higher Education — B.Tech CSE (2024–Present)</li>
-      <li>Graviity Junior College</li>
-      <li>Westberry Tenali</li>
-      <li>Gems Public School</li>
-      <li>Nehuru Nikethan</li>
-    </ul>
+  <div class="skills-group">
+    <h4>AI / ML</h4>
+    <div class="skill-row"><span class="skill-label">LLM Fine-tuning</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">Agent Systems</span>  <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    <div class="skill-row"><span class="skill-label">Ollama / vLLM</span>  <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></div>
   </div>
-
-  <hr>
+  </div><!-- /panel skills -->
+  <div class="float-divider"></div>
+  <!-- EDUCATION — add/remove <li> items -->
+  <div class="panel">
+  <h3 class="section-title">Education</h3>
+  <ul class="edu-list">
+    <li>Siddhartha Academy of Higher Education — B.Tech CSE (2024–Present)</li>
+    <li>Graviity Junior College</li>
+    <li>Westberry Tenali</li>
+    <li>Gems Public School</li>
+    <li>Nehuru Nikethan</li>
+  </ul>
+  </div><!-- /panel education -->
+  <div class="float-divider"></div>
   <p class="footer-text">© 2026 Ruthvik Anne</p>
+
+  </div><!-- /#scene -->
+
+
 
 </body>
 </html>
