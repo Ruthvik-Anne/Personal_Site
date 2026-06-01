@@ -1,5 +1,13 @@
-/* ── Google Fonts loaded in HTML ──────────────── */
-/* Dongle (body), Orbitron (name), Tilt Prism (section titles) */
+/*
+  Fonts loaded from Google Fonts (all in index.html):
+  - Dongle 300/400        → body text
+  - Nunito 400/600        → body fallback
+  - Orbitron 700          → .name
+  - Share Tech Mono       → .name fallback
+  - Tilt Prism            → .section-title
+  - Rajdhani 500/600      → .section-title fallback
+  - Dancing Script 500    → .edu, .talents
+*/
 
 /* ── Base ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
@@ -8,7 +16,7 @@ a { color: #3a86ff; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 body {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(16px, 2vw, 20px);
   max-width: 900px;
   margin: 10px auto;
@@ -29,22 +37,21 @@ hr {
   margin: clamp(14px, 2.5vw, 24px) 0;
 }
 
-/* Global headings — Dongle, scaled */
 h3 {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(24px, 4vw, 40px);
   text-decoration: underline;
   margin: 0 0 8px;
 }
 h4 {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(20px, 3vw, 35px);
   margin: 0 0 6px;
 }
 
 /* ── Header ───────────────────────────────────── */
-.header-table { width: 100%; max-width: 680px; }
-.header-avatar-td { width: clamp(70px, 10vw, 100px); vertical-align: top; }
+.header-table        { width: 100%; max-width: 680px; }
+.header-avatar-td    { width: clamp(70px, 10vw, 100px); vertical-align: top; }
 
 .profile-img {
   width: clamp(60px, 8vw, 80px);
@@ -53,7 +60,7 @@ h4 {
 }
 
 .name {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Orbitron', 'Share Tech Mono';
   font-size: clamp(1.3rem, 3.5vw, 2.2rem);
   font-weight: 700;
   margin: 0 0 4px;
@@ -62,12 +69,14 @@ h4 {
 }
 
 .tagline {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.85rem, 1.8vw, 1rem);
   color: #555;
   margin: 4px 0 8px;
 }
 
 .bio-text {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.85rem, 1.8vw, 1rem);
   color: #333;
   margin: 0 0 6px;
@@ -75,13 +84,14 @@ h4 {
 }
 
 .social-links {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.8rem, 1.6vw, 0.95rem);
   margin: 0;
 }
 
-/* ── Section titles (override global h3) ─────── */
+/* ── Section titles ───────────────────────────── */
 h3.section-title {
-  font-family: 'Tilt Prism', cursive;
+  font-family: 'Tilt Prism', 'Rajdhani';
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   text-decoration: none;
   margin-bottom: 12px;
@@ -103,16 +113,15 @@ h3.section-title {
 }
 .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
 
-/* Card headings — override global h4 */
 .card h4 {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 700;
   color: #1a1a2e;
   margin: 0 0 6px;
 }
-
 .card p {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.82rem, 1.6vw, 0.95rem);
   color: #444;
   line-height: 1.5;
@@ -122,6 +131,7 @@ h3.section-title {
 .published-label { font-weight: 400; color: #137333; }
 
 .card-status {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.75rem, 1.4vw, 0.85rem);
   color: #555;
   margin-top: 8px;
@@ -129,6 +139,7 @@ h3.section-title {
 }
 
 .card-link {
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(0.78rem, 1.4vw, 0.88rem);
   color: #3a86ff;
   margin-top: 8px;
@@ -138,6 +149,7 @@ h3.section-title {
 
 /* ── Tags ─────────────────────────────────────── */
 .tag {
+  font-family: 'Dongle', 'Nunito';
   display: inline-block;
   background: #e8f0fe;
   color: #1a56db;
@@ -160,13 +172,12 @@ h3.section-title {
 .dot-dev  { background: #fbbc04; }
 
 /* ── Skills ───────────────────────────────────── */
-.edu   { font-family: cursive; }
-.talents { font-family: cursive; }
+.edu     { font-family: 'Dancing Script'; }
+.talents { font-family: 'Dancing Script'; }
 
-/* Skills subheadings — override global h4 */
 .talents h4.skills-subheading,
 .talents h4.skills-subheading-mt {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', 'Nunito';
   font-size: clamp(1rem, 2.2vw, 1.3rem);
   color: #333;
 }
@@ -175,6 +186,7 @@ h3.section-title {
 
 .skills-table { border-spacing: 0 6px; }
 .skills-table td:first-child {
+  font-family: 'Dongle', 'Nunito';
   width: clamp(110px, 18vw, 160px);
   font-size: clamp(0.85rem, 1.6vw, 1rem);
   padding-right: 10px;
@@ -197,6 +209,7 @@ h3.section-title {
 
 /* ── Education ────────────────────────────────── */
 .edu ul {
+  font-family: 'Dancing Script';
   line-height: 2;
   font-size: clamp(0.9rem, 1.8vw, 1.05rem);
   padding-left: 20px;
@@ -204,6 +217,7 @@ h3.section-title {
 
 /* ── Footer ───────────────────────────────────── */
 .footer-text {
+  font-family: 'Dongle', 'Nunito';
   color: #aaa;
   font-size: clamp(0.72rem, 1.2vw, 0.85rem);
   text-align: center;
