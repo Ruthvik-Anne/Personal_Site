@@ -315,7 +315,7 @@ h3.section-title {
    EDUCATION
 ══════════════════════════════════════════════ */
 .edu ul {
-  font-family: 'Dancing Script';
+  font-family: 'cursive';
   line-height: 2.2;
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   padding-left: 22px;
