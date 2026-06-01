@@ -18,7 +18,7 @@ a:hover { text-decoration: underline; }
 body {
   font-family: 'Dongle', 'Nunito';
   font-size: clamp(16px, 2vw, 20px);
-  max-width: 900px;
+  width: min(92vw, 1200px);
   margin: 10px auto;
   padding: clamp(10px, 3vw, 24px) clamp(12px, 4vw, 28px);
   color: #222;
@@ -50,7 +50,7 @@ h4 {
 }
 
 /* ── Header ───────────────────────────────────── */
-.header-table        { width: 100%; max-width: 680px; }
+.header-table        { width: 100%; }
 .header-avatar-td    { width: clamp(70px, 10vw, 100px); vertical-align: top; }
 
 .profile-img {
@@ -100,7 +100,7 @@ h3.section-title {
 /* ── Project cards ────────────────────────────── */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: clamp(10px, 2vw, 18px);
 }
 
@@ -187,7 +187,7 @@ h3.section-title {
 .skills-table { border-spacing: 0 6px; }
 .skills-table td:first-child {
   font-family: 'Dongle', 'Nunito';
-  width: clamp(110px, 18vw, 160px);
+  width: clamp(130px, 15vw, 180px);
   font-size: clamp(0.85rem, 1.6vw, 1rem);
   padding-right: 10px;
 }
@@ -196,7 +196,7 @@ h3.section-title {
   background: #eee;
   border-radius: 4px;
   height: 10px;
-  width: clamp(120px, 25vw, 200px);
+  width: clamp(200px, 40vw, 480px);
   display: inline-block;
   vertical-align: middle;
 }
