@@ -19,8 +19,8 @@ body {
   font-family: 'Dongle', 'Nunito';
   font-size: clamp(16px, 2vw, 20px);
   width: min(92vw, 1200px);
-  margin: 10px auto;
-  padding: clamp(10px, 3vw, 24px) clamp(12px, 4vw, 28px);
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 40px);
   color: #222;
 }
 
@@ -51,11 +51,11 @@ h4 {
 
 /* ── Header ───────────────────────────────────── */
 .header-table        { width: 100%; }
-.header-avatar-td    { width: clamp(70px, 10vw, 100px); vertical-align: top; }
+.header-avatar-td    { width: 90px; vertical-align: top; }
 
 .profile-img {
-  width: clamp(60px, 8vw, 80px);
-  height: clamp(60px, 8vw, 80px);
+  width: 80px;
+  height: 80px;
   object-fit: cover;
 }
 
@@ -98,9 +98,12 @@ h3.section-title {
 }
 
 /* ── Project cards ────────────────────────────── */
+/* EDIT: Change 260px below to make cards wider/narrower.
+   Cards auto-wrap to next row when they no longer fit.
+   No other change needed when you add more cards in index.html. */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: clamp(10px, 2vw, 18px);
 }
 
