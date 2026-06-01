@@ -3,8 +3,7 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Tilt+Prism&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&family=Nunito:wght@400;600&family=Orbitron:wght@700&family=Share+Tech+Mono&family=Tilt+Prism&family=Rajdhani:wght@500;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -12,73 +11,26 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="java.js"></script>
   <title>Ruthvik Anne</title>
-  <style>
-    body { font-family: 'Dongle', sans-serif; font-size: 18px; max-width: 860px; margin: auto; padding: 24px 20px; }
-    .name { font-family: 'Orbitron', monospace; font-size: 2em; margin: 0; letter-spacing: 0.04em; }
-    .tagline { color: #555; margin: 4px 0 8px; }
-    .section-title { font-family: 'Tilt Prism', cursive; font-size: 1.5em; margin-bottom: 8px; }
-    hr { border: none; border-top: 1px solid #ddd; margin: 20px 0; }
-
-    /* Skills table */
-    .skills-table td:first-child { width: 130px; }
-    .bar-bg { background: #eee; border-radius: 4px; height: 10px; width: 160px; display: inline-block; vertical-align: middle; }
-    .bar-fill { background: #3a86ff; border-radius: 4px; height: 10px; display: block; }
-
-    /* Project cards */
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
-    .card {
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 16px 18px;
-      background: #fafafa;
-      transition: box-shadow 0.2s;
-    }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
-    .card h4 { margin: 0 0 6px; font-size: 1.1em; color: #1a1a2e; }
-    .card p { margin: 0 0 10px; font-size: 0.95em; color: #444; line-height: 1.4; }
-    .tag {
-      display: inline-block;
-      background: #e8f0fe;
-      color: #1a56db;
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 0.8em;
-      margin: 2px 2px 0 0;
-    }
-    .tag.green { background: #e6f4ea; color: #137333; }
-    .card-link { font-size: 0.85em; color: #3a86ff; text-decoration: none; margin-top: 8px; display: inline-block; }
-    .card-link:hover { text-decoration: underline; }
-    .status-dot {
-      display: inline-block;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      margin-right: 5px;
-      vertical-align: middle;
-    }
-    .dot-live { background: #34a853; }
-    .dot-dev  { background: #fbbc04; }
-  </style>
 </head>
 <body>
 
   <!-- Header -->
-  <table style="width:100%; max-width:640px;" cellspacing="10px">
+  <table class="header-table" cellspacing="10px">
     <tr>
-      <td style="width:90px;">
-        <img class="w3-circle" src="Images/Logo.png" alt="Ruthvik Anne" style="width:80px;height:80px;object-fit:cover;">
+      <td class="header-avatar-td">
+        <img class="w3-circle profile-img" src="Images/Logo.png" alt="Ruthvik Anne">
       </td>
       <td>
         <h1 class="name">Ruthvik Anne</h1>
         <p class="tagline"><em>2nd Year B.Tech CSE · Siddhartha Academy of Higher Education</em></p>
-        <p style="margin:0; color:#333; font-size:0.95em;">
+        <p class="bio-text">
           Building autonomous AI systems and shipping real products.
           Interested in AI agents, systems programming, and cryptography.
         </p>
-        <p style="margin:6px 0 0; font-size:0.9em;">
-          <a href="https://github.com/Ruthvik-Anne" target="_blank" style="color:#3a86ff;">GitHub</a> &nbsp;·&nbsp;
-          <a href="https://huggingface.co/racoon2468" target="_blank" style="color:#3a86ff;">HuggingFace</a> &nbsp;·&nbsp;
-          <a href="mailto:25eu04202@siddhartha.edu.in" style="color:#3a86ff;">Email</a>
+        <p class="social-links">
+          <a href="https://github.com/Ruthvik-Anne" target="_blank">GitHub</a> &nbsp;·&nbsp;
+          <a href="https://huggingface.co/racoon2468" target="_blank">HuggingFace</a> &nbsp;·&nbsp;
+          <a href="mailto:25eu04202@siddhartha.edu.in">Email</a>
         </p>
       </td>
     </tr>
@@ -101,7 +53,7 @@
         <span class="tag">ChromaDB</span>
         <span class="tag">Qwen3</span>
         <br>
-        <span style="font-size:0.82em; color:#555; margin-top:8px; display:inline-block;">
+        <span class="card-status">
           <span class="status-dot dot-live"></span>Running on self-hosted Ubuntu server
         </span>
         <br>
@@ -110,14 +62,14 @@
 
       <!-- NEXUS Fine-tune -->
       <div class="card">
-        <h4>NEXUS Fine-tune · <span style="font-weight:400;color:#137333;">Published</span></h4>
+        <h4>NEXUS Fine-tune · <span class="published-label">Published</span></h4>
         <p>Fine-tuned Qwen3-14B LoRA adapter for agentic reasoning. Trained on a curated 80K-row
            SFT dataset with genuine chain-of-thought blocks.</p>
         <span class="tag green">HuggingFace</span>
         <span class="tag">LoRA</span>
         <span class="tag">Qwen3-14B</span>
         <br>
-        <span style="font-size:0.82em; color:#555; margin-top:8px; display:inline-block;">
+        <span class="card-status">
           <span class="status-dot dot-live"></span>racoon2468/nexus-qwen3-14b-v2
         </span>
         <br>
@@ -126,14 +78,14 @@
 
       <!-- nexus-v3-dataset -->
       <div class="card">
-        <h4>nexus-v3-dataset · <span style="font-weight:400;color:#137333;">Published</span></h4>
+        <h4>nexus-v3-dataset · <span class="published-label">Published</span></h4>
         <p>80K-row SFT dataset for agentic LLM training. Sourced from OpenThoughts, Bespoke-Stratos,
            cybersecurity-qa, Hermes function-calling, and more. All rows verified for real thinking content.</p>
         <span class="tag green">HuggingFace</span>
         <span class="tag">JSONL</span>
         <span class="tag">SFT</span>
         <br>
-        <span style="font-size:0.82em; color:#555; margin-top:8px; display:inline-block;">
+        <span class="card-status">
           <span class="status-dot dot-live"></span>racoon2468/nexus-v3-dataset
         </span>
         <br>
@@ -150,7 +102,7 @@
         <span class="tag">NFC HCE</span>
         <span class="tag">ML Kit</span>
         <br>
-        <span style="font-size:0.82em; color:#555; margin-top:8px; display:inline-block;">
+        <span class="card-status">
           <span class="status-dot dot-dev"></span>In development · Play Store submission
         </span>
         <br>
@@ -165,7 +117,7 @@
   <!-- Skills -->
   <div class="talents">
     <h3 class="section-title">Skills</h3>
-    <h4 style="margin-bottom:8px;">Programming</h4>
+    <h4 class="skills-subheading">Programming</h4>
     <table class="skills-table" cellspacing="6">
       <tr><td>C# / .NET</td> <td><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></td></tr>
       <tr><td>HTML / CSS</td><td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
@@ -174,11 +126,11 @@
       <tr><td>Python</td>    <td><div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></td></tr>
     </table>
 
-    <h4 style="margin: 14px 0 8px;">AI / ML</h4>
+    <h4 class="skills-subheading-mt">AI / ML</h4>
     <table class="skills-table" cellspacing="6">
-      <tr><td>LLM Fine-tuning</td>  <td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
-      <tr><td>Agent Systems</td>    <td><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></td></tr>
-      <tr><td>Ollama / vLLM</td>    <td><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></td></tr>
+      <tr><td>LLM Fine-tuning</td><td><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></td></tr>
+      <tr><td>Agent Systems</td>  <td><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></td></tr>
+      <tr><td>Ollama / vLLM</td>  <td><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></td></tr>
     </table>
   </div>
 
@@ -187,7 +139,7 @@
   <!-- Education -->
   <div class="edu">
     <h3 class="section-title">Education</h3>
-    <ul style="line-height:2;">
+    <ul>
       <li>Siddhartha Academy of Higher Education — B.Tech CSE (2024–Present)</li>
       <li>Graviity Junior College</li>
       <li>Westberry Tenali</li>
@@ -197,7 +149,7 @@
   </div>
 
   <hr>
-  <p style="color:#aaa; font-size:0.8em; text-align:center;">© 2026 Ruthvik Anne</p>
+  <p class="footer-text">© 2026 Ruthvik Anne</p>
 
 </body>
 </html>
