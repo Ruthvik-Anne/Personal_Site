@@ -3,117 +3,153 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruthvik Anne</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Outfit:wght@400;500;600;700&family=Exo+2:wght@600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Ruthvik Anne portfolio showcasing completed AI systems, models, datasets, and shipped projects.">
+  <title>Ruthvik Anne | Completed Work</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="java.js"></script>
 </head>
 <body>
+  <div id="bg-fixed" aria-hidden="true"></div>
 
-  <!-- Fixed background — stays still while panels scroll -->
-  <div id="bg-fixed"></div>
-
-  <div id="scene">
-
-  <!-- HEADER -->
-  <div class="panel-header">
-  <div class="header">
-    <img class="profile-img" src="Images/Logo.png" alt="Ruthvik Anne">
-    <div>
-      <h1 class="name">Ruthvik Anne</h1>
-      <p class="tagline">2nd Year B.Tech CSE · Siddhartha Academy of Higher Education</p>
-      <p class="bio-text">Building autonomous AI systems and shipping real products. Interested in AI agents, systems programming, and cryptography.</p>
-      <div class="social-links">
-        <a href="https://github.com/Ruthvik-Anne" target="_blank">GitHub</a>
-        <a href="https://huggingface.co/ruthvikanne" target="_blank">HuggingFace</a>
-        <a href="mailto:25eu04202@siddhartha.edu.in">Email</a>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Portfolio · Completed work only</p>
+        <h1>Ruthvik Anne</h1>
+        <p class="lede">I build agentic systems, model tooling, and product prototypes with a minimal, high-clarity finish.</p>
+        <p class="support">B.Tech CSE · Siddhartha Academy of Higher Education</p>
+        <div class="actions">
+          <a href="https://github.com/Ruthvik-Anne" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://huggingface.co/ruthvikanne" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+          <a href="mailto:25eu04202@siddhartha.edu.in">Email</a>
+        </div>
       </div>
-    </div>
-  </div>
-  </div><!-- /panel-header -->
-  <div class="float-divider"></div>
-  <!-- PROJECTS — copy a .card block to add more -->
-  <div class="panel">
-  <h3 class="section-title">Projects</h3>
-  <div class="projects-grid">
 
-    <!-- ── CARD 1 ── -->
-    <div class="card">
-      <h4>NEXUS — Autonomous AI Agent System</h4>
-      <p>Manager-worker DAG executor with Qwen3-14B orchestrator and specialised qwen3:1.7b workers. LOOP skill engine, ChromaDB memory, fine-tuned model.</p>
-      <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">ChromaDB</span><span class="tag">Qwen3</span>
-      <div class="card-status"><span class="dot dot-live"></span>Running on self-hosted Ubuntu server</div>
-      <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
-    </div>
+      <aside class="status-panel" aria-label="Portfolio status">
+        <div>
+          <span class="status-label">Focus</span>
+          <strong>Completed projects</strong>
+        </div>
+        <div>
+          <span class="status-label">Visual language</span>
+          <strong>Minimal techno</strong>
+        </div>
+        <div>
+          <span class="status-label">Release</span>
+          <strong>Deployed</strong>
+        </div>
+      </aside>
+    </header>
 
-    <!-- ── CARD 2 ── -->
-    <div class="card">
-      <h4>NEXUS Fine-tune · <span class="published-label">Published</span></h4>
-      <p>Fine-tuned Qwen3-14B LoRA adapter for agentic reasoning. Trained on a curated 80K-row SFT dataset with genuine chain-of-thought blocks.</p>
-      <span class="tag green">HuggingFace</span><span class="tag">LoRA</span><span class="tag">Qwen3-14B</span>
-      <div class="card-status"><span class="dot dot-live"></span>ruthvikanne/nexus-qwen3-14b-v2</div>
-      <a class="card-link" href="https://huggingface.co/ruthvikanne/nexus-qwen3-14b-v2" target="_blank">→ HuggingFace</a>
-    </div>
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Selected achievements</p>
+          <h2>Finished projects</h2>
+        </div>
+        <p class="section-note">Only completed work is listed here. No in-progress items, no organization work.</p>
+      </div>
 
-    <!-- ── CARD 3 ── -->
-    <div class="card">
-      <h4>nexus-v3-dataset · <span class="published-label">Published</span></h4>
-      <p>80K-row SFT dataset for agentic LLM training. OpenThoughts, Bespoke-Stratos, cybersecurity-qa, Hermes function-calling. All rows verified for real thinking content.</p>
-      <span class="tag green">HuggingFace</span><span class="tag">JSONL</span><span class="tag">SFT</span>
-      <div class="card-status"><span class="dot dot-live"></span>ruthvikanne/nexus-v3-dataset</div>
-      <a class="card-link" href="https://huggingface.co/datasets/ruthvikanne/nexus-v3-dataset" target="_blank">→ HuggingFace</a>
-    </div>
+      <div class="cards">
+        <article class="card featured">
+          <div class="card-top">
+            <h3>Zero</h3>
+            <span class="pill">Open source</span>
+          </div>
+          <p>Self-improving RLM agent with persistent harness state, background sessions, and built-in subagents for long-running work.</p>
+          <div class="tags">
+            <span>Python</span><span>Agentic systems</span><span>RLM</span>
+          </div>
+          <a class="card-link" href="https://github.com/Ruthvik-Anne/zero" target="_blank" rel="noopener noreferrer">View project</a>
+        </article>
 
-    <!-- ── CARD 4 ── -->
-    <div class="card">
-      <h4>Tapcard — Android NFC Business Card</h4>
-      <p>Share and receive cards via NFC, QR, and Nearby Connections simultaneously. ML Kit OCR scans physical cards. Gemini 2.0 Flash for smart parsing.</p>
-      <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">NFC HCE</span><span class="tag">ML Kit</span>
-      <div class="card-status"><span class="dot dot-dev"></span>In development · Play Store submission</div>
-      <a class="card-link" href="https://github.com/Ruthvik-Anne" target="_blank">→ GitHub</a>
-    </div>
+        <article class="card">
+          <div class="card-top">
+            <h3>NEXUS</h3>
+            <span class="pill">Completed</span>
+          </div>
+          <p>Autonomous AI agent system with a manager-worker DAG, durable memory, and specialised workers for production-style orchestration.</p>
+          <div class="tags">
+            <span>Python</span><span>Ollama</span><span>ChromaDB</span>
+          </div>
+          <a class="card-link" href="https://github.com/Ruthvik-Anne/nexus" target="_blank" rel="noopener noreferrer">View project</a>
+        </article>
 
-  </div>
-  </div><!-- /panel projects -->
-  <div class="float-divider"></div>
-  <!-- SKILLS — change width:XX% to adjust bar, add <tr> for new skill -->
-  <div class="panel">
-  <h3 class="section-title">Skills</h3>
+        <article class="card">
+          <div class="card-top">
+            <h3>NEXUS Fine-tune</h3>
+            <span class="pill">Published</span>
+          </div>
+          <p>Published Qwen3-14B LoRA adapter for agentic reasoning and workflow-heavy tasks.</p>
+          <div class="tags">
+            <span>Hugging Face</span><span>LoRA</span><span>Qwen3</span>
+          </div>
+          <a class="card-link" href="https://huggingface.co/ruthvikanne/nexus-qwen3-14b-v2" target="_blank" rel="noopener noreferrer">View model</a>
+        </article>
 
-  <div class="skills-group">
-    <h4>Programming</h4>
-    <div class="skill-row"><span class="skill-label">C# / .NET</span> <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">HTML / CSS</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">SQL</span>        <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">C / C++</span>    <div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Python</span>     <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></div>
-  </div>
+        <article class="card">
+          <div class="card-top">
+            <h3>nexus-v3-dataset</h3>
+            <span class="pill">Published</span>
+          </div>
+          <p>80K-row SFT dataset for agentic LLM training, curated for reasoning, function calling, and structured instruction work.</p>
+          <div class="tags">
+            <span>Hugging Face</span><span>JSONL</span><span>SFT</span>
+          </div>
+          <a class="card-link" href="https://huggingface.co/datasets/ruthvikanne/nexus-v3-dataset" target="_blank" rel="noopener noreferrer">View dataset</a>
+        </article>
 
-  <div class="skills-group">
-    <h4>AI / ML</h4>
-    <div class="skill-row"><span class="skill-label">LLM Fine-tuning</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Agent Systems</span>  <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Ollama / vLLM</span>  <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></div>
-  </div>
-  </div><!-- /panel skills -->
-  <div class="float-divider"></div>
-  <!-- EDUCATION — add/remove <li> items -->
-  <div class="panel">
-  <h3 class="section-title">Education</h3>
-  <ul class="edu-list">
-    <li>Siddhartha Academy of Higher Education — B.Tech CSE (2024–Present)</li>
-    <li>Graviity Junior College</li>
-    <li>Westberry Tenali</li>
-  </ul>
-  </div><!-- /panel education -->
-  <div class="float-divider"></div>
-  <p class="footer-text">© 2026 Ruthvik Anne</p>
+        <article class="card">
+          <div class="card-top">
+            <h3>Doc_Classifier</h3>
+            <span class="pill">Completed</span>
+          </div>
+          <p>Offline AI file organizer using MediaPipe, TensorFlow Lite, and sentence-transformers for private classification and sorting.</p>
+          <div class="tags">
+            <span>Python</span><span>TensorFlow Lite</span><span>Privacy-first</span>
+          </div>
+          <a class="card-link" href="https://github.com/Ruthvik-Anne/Doc_Classifier" target="_blank" rel="noopener noreferrer">View project</a>
+        </article>
 
-  </div><!-- /#scene -->
+        <article class="card">
+          <div class="card-top">
+            <h3>prompt-complexity-analyzer</h3>
+            <span class="pill">Published</span>
+          </div>
+          <p>Local ML scorer that rates prompt complexity and recommends the right model without API calls.</p>
+          <div class="tags">
+            <span>Python</span><span>ML</span><span>CLI</span>
+          </div>
+          <a class="card-link" href="https://github.com/Ruthvik-Anne/prompt-complexity-analyzer" target="_blank" rel="noopener noreferrer">View project</a>
+        </article>
 
+        <article class="card">
+          <div class="card-top">
+            <h3>ThinkStrike</h3>
+            <span class="pill">Archived</span>
+          </div>
+          <p>Modular AI quiz platform for student feedback, teacher dashboards, and admin management.</p>
+          <div class="tags">
+            <span>FastAPI</span><span>Flutter</span><span>Education</span>
+          </div>
+          <a class="card-link" href="https://github.com/Ruthvik-Anne/Think_Strike" target="_blank" rel="noopener noreferrer">View project</a>
+        </article>
 
+        <article class="card">
+          <div class="card-top">
+            <h3>Tapcard</h3>
+            <span class="pill deployed">Deployed</span>
+          </div>
+          <p>Android NFC business card with QR sharing, Nearby Connections, OCR capture, and Gemini-powered parsing.</p>
+          <div class="tags">
+            <span>Kotlin</span><span>Jetpack Compose</span><span>NFC</span>
+          </div>
+          <span class="card-link muted">Live and deployed</span>
+        </article>
+      </div>
+    </section>
 
+    <footer class="footer-text">© 2026 Ruthvik Anne</footer>
+  </main>
 </body>
 </html>
