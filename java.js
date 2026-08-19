@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const dy = a.y - b.y;
         const dist = Math.hypot(dx, dy);
         if (dist < 210 * devicePixelRatio) {
-          ctx.strokeStyle = `rgba(214, 179, 109, ${0.08 * (1 - dist / (210 * devicePixelRatio))})`;
+          ctx.strokeStyle = `rgba(201, 173, 120, ${0.08 * (1 - dist / (210 * devicePixelRatio))})`;
           ctx.lineWidth = 1 * devicePixelRatio;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -88,15 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (const p of particles) {
       const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 18 * devicePixelRatio);
-      glow.addColorStop(0, "rgba(214, 179, 109, 0.28)");
-      glow.addColorStop(0.45, "rgba(166, 124, 82, 0.12)");
-      glow.addColorStop(1, "rgba(166, 124, 82, 0)");
+      glow.addColorStop(0, "rgba(201, 173, 120, 0.24)");
+      glow.addColorStop(0.45, "rgba(111, 136, 154, 0.12)");
+      glow.addColorStop(1, "rgba(111, 136, 154, 0)");
       ctx.fillStyle = glow;
       ctx.beginPath();
       ctx.arc(p.x, p.y, 18 * devicePixelRatio, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.72)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.68)";
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r * devicePixelRatio, 0, Math.PI * 2);
       ctx.fill();
