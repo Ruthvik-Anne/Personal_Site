@@ -47,6 +47,7 @@ body {
     radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--accent-3) 10%, transparent), transparent 22%),
     linear-gradient(180deg, var(--canvas-deep), var(--canvas));
   line-height: 1.55;
+  overflow-x: hidden;
 }
 
 img {
@@ -63,13 +64,16 @@ a {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 55%);
-  background-size: 88px 88px, 88px 88px, 100% 100%;
+  overflow: hidden;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 88%);
-  opacity: 0.45;
+  opacity: 0.62;
+}
+
+#bg-fixed canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .page {
@@ -89,7 +93,8 @@ a {
 
 .hero-copy,
 .status-panel,
-.card {
+.card,
+.info-panel {
   background: var(--surface);
   border: 1px solid var(--separator);
   box-shadow: var(--shadow);
@@ -102,18 +107,34 @@ a {
   padding: clamp(26px, 4vw, 44px);
   position: relative;
   overflow: hidden;
+  animation: liftIn 720ms var(--ease) both;
 }
 
+.hero-copy::before,
 .hero-copy::after {
   content: "";
   position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-copy::before {
+  inset: 16% auto auto 68%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 38%, transparent), transparent 70%);
+  filter: blur(4px);
+  animation: drift 12s var(--ease) infinite alternate;
+}
+
+.hero-copy::after {
   inset: auto -10% -40% auto;
   width: 240px;
   height: 240px;
   background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 44%, transparent), transparent 68%);
   filter: blur(10px);
   opacity: 0.55;
-  pointer-events: none;
+  animation: drift 16s var(--ease) infinite alternate-reverse;
 }
 
 .eyebrow {
@@ -182,6 +203,8 @@ h1 {
   display: grid;
   gap: 14px;
   align-content: start;
+  animation: liftIn 840ms var(--ease) both;
+  animation-delay: 110ms;
 }
 
 .status-panel div {
@@ -189,7 +212,11 @@ h1 {
   border-radius: 20px;
   background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
   border: 1px solid var(--separator);
+  animation: pulse 8s ease-in-out infinite;
 }
+
+.status-panel div:nth-child(2) { animation-delay: 1s; }
+.status-panel div:nth-child(3) { animation-delay: 2s; }
 
 .status-label {
   display: block;
@@ -217,9 +244,18 @@ h1 {
   margin-bottom: 18px;
 }
 
+.section-head.compact {
+  margin-bottom: 18px;
+}
+
 h2 {
   font-size: clamp(1.5rem, 2.8vw, 2.2rem);
   line-height: 1.05;
+}
+
+h3 {
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 .section-note {
@@ -232,6 +268,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 16px;
+  perspective: 1200px;
 }
 
 .card {
@@ -242,8 +279,19 @@ h2 {
   gap: 14px;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
   transition: transform 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  animation: liftIn 720ms var(--ease) both;
 }
+
+.card:nth-child(1) { animation-delay: 40ms; }
+.card:nth-child(2) { animation-delay: 80ms; }
+.card:nth-child(3) { animation-delay: 120ms; }
+.card:nth-child(4) { animation-delay: 160ms; }
+.card:nth-child(5) { animation-delay: 200ms; }
+.card:nth-child(6) { animation-delay: 240ms; }
+.card:nth-child(7) { animation-delay: 280ms; }
+.card:nth-child(8) { animation-delay: 320ms; }
 
 .card::before {
   content: "";
@@ -256,7 +304,7 @@ h2 {
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) rotateX(1.5deg);
   border-color: color-mix(in srgb, var(--accent) 28%, var(--separator));
 }
 
@@ -308,7 +356,8 @@ h2 {
   gap: 8px;
 }
 
-.tags span {
+.tags span,
+.skill-tags span {
   display: inline-flex;
   align-items: center;
   min-height: 28px;
@@ -334,6 +383,66 @@ h2 {
   box-shadow: none;
 }
 
+.section-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.info-panel {
+  border-radius: 30px;
+  padding: 24px;
+  animation: liftIn 760ms var(--ease) both;
+}
+
+.skill-group + .skill-group {
+  margin-top: 18px;
+}
+
+.skill-group h3 {
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tags span {
+  max-width: 100%;
+}
+
+.education-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.education-list li {
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid var(--separator);
+  background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
+  display: grid;
+  gap: 4px;
+}
+
+.education-title {
+  font-weight: 600;
+}
+
+.education-meta {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
 .footer-text {
   margin: 26px 0 0;
   text-align: center;
@@ -341,9 +450,31 @@ h2 {
   font-size: 0.86rem;
 }
 
+@keyframes liftIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-14px, 10px, 0) scale(1.04); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 @media (max-width: 860px) {
   .hero,
-  .section-head {
+  .section-head,
+  .section-split {
     grid-template-columns: 1fr;
     display: grid;
     align-items: start;
@@ -357,7 +488,8 @@ h2 {
   }
 
   .hero-copy,
-  .status-panel {
+  .status-panel,
+  .info-panel {
     border-radius: 24px;
   }
 
