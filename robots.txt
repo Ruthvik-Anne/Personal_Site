@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ruthvik-anne.github.io/Personal_Site/sitemap.xml
+

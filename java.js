@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const footer = document.querySelector(".footer-text");
-  if (footer) footer.textContent = "© " + new Date().getFullYear() + " Ruthvik Anne";
+  if (footer) footer.textContent = "Â© " + new Date().getFullYear() + " Ruthvik Anne";
 
   const host = document.getElementById("bg-fixed");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const dx = (pointer.x - px) * width;
       const dy = (pointer.y - py) * height;
       const dist = Math.max(1, Math.hypot(dx, dy));
-      const pull = pointer.active ? Math.min(16_000 / (dist * dist), 0.06) : 0.01;
+      const pull = pointer.active ? Math.min(16000 / (dist * dist), 0.06) : 0.01;
       const driftX = Math.cos(p.phase + performance.now() * 0.00035) * 0.015;
       const driftY = Math.sin(p.phase + performance.now() * 0.00042) * 0.012;
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const dy = a.y - b.y;
         const dist = Math.hypot(dx, dy);
         if (dist < 210 * devicePixelRatio) {
-          ctx.strokeStyle = `rgba(201, 173, 120, ${0.08 * (1 - dist / (210 * devicePixelRatio))})`;
+          ctx.strokeStyle = `rgba(103, 70, 54, ${0.08 * (1 - dist / (210 * devicePixelRatio))})`;
           ctx.lineWidth = 1 * devicePixelRatio;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -88,9 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (const p of particles) {
       const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 18 * devicePixelRatio);
-      glow.addColorStop(0, "rgba(201, 173, 120, 0.24)");
-      glow.addColorStop(0.45, "rgba(111, 136, 154, 0.12)");
-      glow.addColorStop(1, "rgba(111, 136, 154, 0)");
+      glow.addColorStop(0, "rgba(103, 70, 54, 0.22)");
+      glow.addColorStop(0.45, "rgba(170, 179, 150, 0.14)");
+      glow.addColorStop(1, "rgba(170, 179, 150, 0)");
       ctx.fillStyle = glow;
       ctx.beginPath();
       ctx.arc(p.x, p.y, 18 * devicePixelRatio, 0, Math.PI * 2);
@@ -132,3 +132,4 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("pointermove", setPointer, { passive: true });
   window.addEventListener("pointerleave", resetPointer, { passive: true });
 });
+
