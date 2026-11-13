@@ -3,22 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ruthvik Anne portfolio featuring independent AI systems, models, datasets, skills, education, and shipped products.">
+  <title>Ruthvik Anne | AI systems, research and products</title>
+  <meta name="description" content="Ruthvik Anne is a B.Tech CSE student building sovereign AI platforms, agent and training pipelines, security-first products and research. Projects, organisations, build log and research notebook.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#F2F2F2">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ruthvik-anne.github.io/Personal_Site/">
   <meta property="og:title" content="Ruthvik Anne">
-  <meta property="og:description" content="Independent AI systems, skills, education, and shipped products in a refined portfolio.">
-  <meta property="og:image" content="https://ruthvik-anne.github.io/Personal_Site/Images/Logo.png">
-  <meta property="og:image:alt" content="Ruthvik Anne logo">
+  <meta property="og:description" content="Sovereign AI platforms, agent and training pipelines, security-first products and research.">
+  <meta property="og:image" content="https://ruthvik-anne.github.io/Personal_Site/Images/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ruthvik Anne, RA monogram">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Ruthvik Anne</title>
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+  <link rel="apple-touch-icon" href="Images/ra-avatar.png">
   <link rel="canonical" href="https://ruthvik-anne.github.io/Personal_Site/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
   <script defer src="java.js"></script>
   <script type="application/ld+json">
   {
@@ -28,212 +33,402 @@
     "url": "https://ruthvik-anne.github.io/Personal_Site/",
     "sameAs": [
       "https://github.com/Ruthvik-Anne",
+      "https://github.com/Halcyon-Technologies",
       "https://huggingface.co/ruthvikanne"
     ],
     "jobTitle": "Student and Builder",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Siddhartha Academy of Higher Education" },
     "knowsAbout": [
       "Artificial Intelligence",
       "Agentic AI",
-      "Retrieval-Augmented Generation",
-      "Machine Learning",
       "Large Language Model Fine-Tuning",
-      "Multi-Agent Systems"
+      "Multi-Agent Systems",
+      "Systems Architecture",
+      "Causal Inference",
+      "Security Engineering"
     ]
   }
   </script>
 </head>
-<body>
+<body class="is-loading">
+  <a class="skip" href="#work">Skip to content</a>
+
+  <!-- intro curtain: hides itself on its own after 5s if scripts fail -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="lp top"></div><div class="lp bot"></div>
+    <div class="loader-core">
+      <img class="loader-logo" src="Images/ra-mark-white.png" alt="" width="104" height="104">
+      <div class="loader-name">RUTHVIK ANNE</div>
+      <div class="loader-bar"><i></i></div>
+      <div class="loader-meta"><span>Loading systems</span><span id="loader-n">000</span></div>
+    </div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor-glow" id="glow" aria-hidden="true"></div>
   <div id="bg-fixed" aria-hidden="true"></div>
 
+  <nav class="dock" aria-label="Sections">
+    <a class="home" href="#top" aria-label="Back to top"><img src="Images/ra-avatar.png" alt="RA" width="28" height="28"></a>
+    <a href="#work" data-nav="work">Work</a>
+    <a href="#orgs" data-nav="orgs">Orgs</a>
+    <a href="#journey" data-nav="journey">Build log</a>
+    <a href="#lab" data-nav="lab">Lab</a>
+    <a href="#stack" data-nav="stack">Stack</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+
   <main class="page">
-    <header class="hero">
-      <div class="hero-copy">
+    <header class="hero" id="top">
+      <canvas class="hero-water" id="water" aria-hidden="true"></canvas>
+      <div class="orb a" aria-hidden="true"></div>
+      <div class="orb b" aria-hidden="true"></div>
+      <div class="wrap">
         <div class="brand-lockup">
-          <img class="brand-mark" src="Images/Logo.png" alt="Ruthvik Anne logo">
-          <div>
-            <p class="eyebrow">Ruthvik Anne / Portfolio</p>
-            <h1>Ruthvik Anne</h1>
-          </div>
+          <img class="brand-mark" src="Images/ra-mark-ink.png" alt="RA monogram" width="44" height="44">
+          <p class="eyebrow">Student &middot; Builder &middot; Systems architect</p>
         </div>
-        <p class="lede">I design and ship practical AI systems, from agent workflows and fine-tuned models to privacy-minded product tools.</p>
-        <p class="support">Open to research collaborations and ambitious product work.</p>
+        <h1 class="name" aria-label="Ruthvik Anne"><span class="row">Ruthvik</span><span class="row outline">Anne</span></h1>
+        <p class="role"><span class="lead">I design and ship</span><span class="swap" id="swap" aria-live="off">sovereign AI platforms</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="lede">From air-gapped AI platforms and model-training pipelines to privacy-minded products and research that has to survive its own experiments. Second-year B.Tech CSE at Siddhartha Academy of Higher Education, Vijayawada.</p>
         <div class="actions">
-          <a href="https://github.com/Ruthvik-Anne" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://huggingface.co/ruthvikanne" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          <a href="mailto:anneruthvik9@gmail.com">Email</a>
+          <a class="btn" href="#work" data-magnet>See the work</a>
+          <a class="btn ghost" href="https://github.com/Ruthvik-Anne" target="_blank" rel="noopener noreferrer" data-magnet>GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          <a class="btn ghost" href="https://huggingface.co/ruthvikanne" target="_blank" rel="noopener noreferrer" data-magnet>Hugging Face <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+        </div>
+        <div class="stats" id="stats">
+          <div class="stat"><b data-count="36">36</b><span>repositories</span><small>across 3 GitHub homes, Nov 2026</small></div>
+          <div class="stat"><b data-count="2">2</b><span>organisations</span><small>Halcyon Technologies, Denvire Tech</small></div>
+          <div class="stat"><b data-count="2">2</b><span>public datasets</span><small>on Hugging Face</small></div>
+          <div class="stat"><b data-count="47" data-suffix="+">47+</b><span>custom Claude skills</span><small>research, architecture, verification</small></div>
         </div>
       </div>
-
+      <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
     </header>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2>Built to ship</h2>
+    <div class="band" aria-hidden="true">
+      <div class="track"><span>AWAN</span><span>DAWN</span><span>NEXUS</span><span>ZERO</span><span>PRANI</span><span>SOLOMON</span><span>ARMO</span><span>TROBO HEALTH</span><span>HEALTHRESQ</span><span>TAPCARD</span><span>KART</span><span>GRAVITON</span><span aria-hidden="true">AWAN</span><span aria-hidden="true">DAWN</span><span aria-hidden="true">NEXUS</span><span aria-hidden="true">ZERO</span><span aria-hidden="true">PRANI</span><span aria-hidden="true">SOLOMON</span><span aria-hidden="true">ARMO</span><span aria-hidden="true">TROBO HEALTH</span><span aria-hidden="true">HEALTHRESQ</span><span aria-hidden="true">TAPCARD</span><span aria-hidden="true">KART</span><span aria-hidden="true">GRAVITON</span></div>
+      <div class="track rev"><span>COLLOSEUM</span><span>XTRON</span><span>HALO</span><span>W OS</span><span>BRAINOS</span><span>COREGUARD</span><span>PRAXIS</span><span>NAVE</span><span>AEGIS</span><span>UTAKE</span><span>SPECTER</span><span>DEVTOOLS</span><span aria-hidden="true">COLLOSEUM</span><span aria-hidden="true">XTRON</span><span aria-hidden="true">HALO</span><span aria-hidden="true">W OS</span><span aria-hidden="true">BRAINOS</span><span aria-hidden="true">COREGUARD</span><span aria-hidden="true">PRAXIS</span><span aria-hidden="true">NAVE</span><span aria-hidden="true">AEGIS</span><span aria-hidden="true">UTAKE</span><span aria-hidden="true">SPECTER</span><span aria-hidden="true">DEVTOOLS</span></div>
+    </div>
+
+    <!-- 01 WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="sec-head" data-r>
+          <span class="sec-no" aria-hidden="true">01</span>
+          <h2 data-split>What I am building</h2>
+          <p class="sec-note">Public repositories link out; private ones are labelled. Statuses are literal: <b>Specs</b>, <b>Blueprint</b> and <b>Design</b> mean a written design, not shipped code.</p>
         </div>
-        <p class="section-note">A focused selection of completed, independent work across agent systems, models, datasets, and products.</p>
-      </div>
-
-      <div class="project-list">
-        <article class="card featured">
-          <div class="card-top">
-            <h3>Zero</h3>
-            <span class="pill">Open source</span>
-          </div>
-          <p>A persistent, self-improving RLM agent engineered for long-running work with background sessions and built-in subagents.</p>
-          <div class="tags">
-            <span>Python</span><span>Agentic systems</span><span>RLM</span>
-          </div>
-          <a class="card-link" href="https://github.com/Ruthvik-Anne/zero" target="_blank" rel="noopener noreferrer">View project</a>
+        <div class="filters" role="group" aria-label="Filter projects" data-r><button type="button" data-filter="all" aria-pressed="true">All<i>22</i></button><button type="button" data-filter="ai" aria-pressed="false">AI &amp; models<i>9</i></button><button type="button" data-filter="platform" aria-pressed="false">Platforms<i>7</i></button><button type="button" data-filter="product" aria-pressed="false">Products<i>9</i></button><button type="button" data-filter="security" aria-pressed="false">Security<i>5</i></button><button type="button" data-filter="research" aria-pressed="false">Research<i>3</i></button><button type="button" data-filter="oss" aria-pressed="false">Open source<i>5</i></button></div>
+        <div class="grid" id="grid">
+        <article class="card wide" data-cat="platform ai security" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>AWAN</h3><span class="pill st-active"><i></i>Active</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><span>Private &middot; Halcyon Technologies</span></p>
+          <p class="d">A self-hosted, air-gapped sovereign AI platform for confidential industrial and government work. Four strictly separated layers cover model inference, knowledge, agent execution and user interfaces. Submitted to Smart India Hackathon 2026 as team Akatsuki.</p>
+          <div class="tags"><span>Air-gapped</span><span>Open-weight LLMs</span><span>Agentic AI</span><span>Sovereign</span></div>
+          <div class="card-links"><span class="card-link muted">Not public</span></div>
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>NEXUS</h3>
-            <span class="pill">Completed</span>
-          </div>
-          <p>An autonomous manager-worker system with durable memory and a directed workflow for specialised AI tasks.</p>
-          <div class="tags">
-            <span>Python</span><span>Ollama</span><span>ChromaDB</span>
-          </div>
-          <a class="card-link" href="https://github.com/Ruthvik-Anne/nexus" target="_blank" rel="noopener noreferrer">View project</a>
+        <article class="card wide" data-cat="ai" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>NEXUS</h3><span class="pill st-active"><i></i>Active</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public &middot; Earlier version public</span></p>
+          <p class="d">A personal AI system on two parallel tracks: a distillation pipeline toward a deployable mixture-of-experts model served on CPU, and a from-scratch research build of the HOPE architecture on a Qwen3-4B base. The first manager-worker version is public; adapters and datasets are private.</p>
+          <div class="tags"><span>Distillation</span><span>HOPE</span><span>llama.cpp</span><span>Qwen</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/nexus" target="_blank" rel="noopener noreferrer">Earlier version<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>NEXUS Fine-tune</h3>
-            <span class="pill">Published</span>
-          </div>
-          <p>A published Qwen3-14B LoRA adapter tuned for structured reasoning and agent-driven workflows.</p>
-          <div class="tags">
-            <span>Hugging Face</span><span>LoRA</span><span>Qwen3</span>
-          </div>
-          <a class="card-link" href="https://huggingface.co/ruthvikanne/nexus-qwen3-14b-v2" target="_blank" rel="noopener noreferrer">View model</a>
+        <article class="card wide" data-cat="research ai" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Language-free thought</h3><span class="pill st-research"><i></i>Research</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Paper in progress</span></p>
+          <p class="d">Do populations of tiny language-free learners learn what a single learner cannot? A simulated world of reward-modulated Hebbian entities (about 10k weights each, no backprop) tests the claim, with experiments run on Kaggle and a paper in progress.</p>
+          <div class="tags"><span>Hebbian learning</span><span>Simulation</span><span>Kaggle</span><span>Population intelligence</span></div>
+          
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>nexus-v3-dataset</h3>
-            <span class="pill">Published</span>
-          </div>
-          <p>An 80K-row SFT dataset for agentic LLM training, spanning reasoning, function calling, and structured instruction work.</p>
-          <div class="tags">
-            <span>Hugging Face</span><span>JSONL</span><span>SFT</span>
-          </div>
-          <a class="card-link" href="https://huggingface.co/datasets/ruthvikanne/nexus-v3-dataset" target="_blank" rel="noopener noreferrer">View dataset</a>
+        <article class="card" data-cat="platform security" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>Dawn</h3><span class="pill st-design"><i></i>Specs &amp; contracts</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><span>Private &middot; Halcyon Technologies</span></p>
+          <p class="d">The container and networking substrate under Awan, specified as five Go components: engine, certificate authority, port registry, link protocol and a single ingress, with written contracts between them.</p>
+          <div class="tags"><span>Go</span><span>Protobuf</span><span>Networking</span><span>Isolation</span></div>
+          <div class="card-links"><span class="card-link muted">Not public</span></div>
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Doc_Classifier</h3>
-            <span class="pill">Completed</span>
-          </div>
-          <p>An offline file organiser that uses local ML to classify and sort documents without sending them to the cloud.</p>
-          <div class="tags">
-            <span>Python</span><span>TensorFlow Lite</span><span>Privacy-first</span>
-          </div>
-          <a class="card-link" href="https://github.com/Ruthvik-Anne/Doc_Classifier" target="_blank" rel="noopener noreferrer">View project</a>
+        <article class="card" data-cat="ai oss" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>Zero</h3><span class="pill st-public"><i></i>Open source</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public &middot; Fork of prime-agent</span></p>
+          <p class="d">A coding and research agent built around a Recursive Language Model: a persistent Python REPL, built-in subagents, background sessions and a harness that refines itself from evidence. My rebranded fork of PrimeIntellect&#x27;s prime-agent.</p>
+          <div class="tags"><span>Python</span><span>RLM</span><span>Agents</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/zero" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>prompt-complexity-analyzer</h3>
-            <span class="pill">Published</span>
-          </div>
-          <p>A local ML utility that scores prompt complexity and recommends an appropriate model without API calls.</p>
-          <div class="tags">
-            <span>Python</span><span>ML</span><span>CLI</span>
-          </div>
-          <a class="card-link" href="https://github.com/Ruthvik-Anne/prompt-complexity-analyzer" target="_blank" rel="noopener noreferrer">View project</a>
+        <article class="card" data-cat="ai research oss" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Kernel-C training data</h3><span class="pill st-public"><i></i>Datasets live</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public &middot; Hugging Face</span></p>
+          <p class="d">Training data for a kernel-level C coding model. Two public datasets cover kernel and MCU/RTOS source plus systems-programming knowledge, ahead of a pilot fine-tune on Qwen2.5-Coder-14B.</p>
+          <div class="tags"><span>Hugging Face</span><span>C</span><span>Linux kernel</span><span>RTOS</span></div>
+          <div class="card-links"><a class="card-link" href="https://huggingface.co/datasets/ruthvikanne/kernel-mcu-c-pool" target="_blank" rel="noopener noreferrer">kernel-mcu-c-pool<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a><a class="card-link" href="https://huggingface.co/datasets/ruthvikanne/kernel-pool-knowledge" target="_blank" rel="noopener noreferrer">kernel-pool-knowledge<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>ThinkStrike</h3>
-            <span class="pill">Archived</span>
-          </div>
-          <p>A modular learning platform for AI-powered quizzes, classroom feedback, and administration.</p>
-          <div class="tags">
-            <span>FastAPI</span><span>Flutter</span><span>Education</span>
-          </div>
-          <a class="card-link" href="https://github.com/Ruthvik-Anne/Think_Strike" target="_blank" rel="noopener noreferrer">View project</a>
+        <article class="card" data-cat="research platform" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>Solomon</h3><span class="pill st-research"><i></i>Research &amp; design</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Design documents</span></p>
+          <p class="d">A formally verifiable, experiment-backed data-analysis engine: every claim must trace to a checkable experiment. Thirty features across thirteen containers, with causal-discovery components prototyped in C and a closed-loop search that improved the Bayesian posterior method.</p>
+          <div class="tags"><span>Causal inference</span><span>Verification</span><span>C</span></div>
+          
         </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Tapcard</h3>
-            <span class="pill deployed">Deployed</span>
-          </div>
-          <p>A deployed Android business card app with NFC, QR sharing, OCR capture, and intelligent contact parsing.</p>
-          <div class="tags">
-            <span>Kotlin</span><span>Jetpack Compose</span><span>NFC</span>
-          </div>
-          <span class="card-link muted">Live and deployed</span>
+        <article class="card" data-cat="product security" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>Armo</h3><span class="pill st-design"><i></i>MVP architecture</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><span>Private &middot; Halcyon Technologies</span></p>
+          <p class="d">A security-first, AI-assisted operating system for Indian advocates and small legal teams. Envelope-encrypted documents, Indian-script OCR and grounded legal retrieval, designed so a busy advocate finds it immediately practical.</p>
+          <div class="tags"><span>FastAPI</span><span>Next.js</span><span>PostgreSQL</span><span>Cloud KMS</span></div>
+          <div class="card-links"><span class="card-link muted">Not public</span></div>
         </article>
+        <article class="card" data-cat="product" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Trobo Health</h3><span class="pill st-design"><i></i>Design phase</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Concept &amp; design</span></p>
+          <p class="d">An AI intake assistant and clinic-management platform for small Indian clinics. The intake concept was submitted to Samsung Solve for Tomorrow 2026; the clinic system is designed around ABDM and DPDP compliance.</p>
+          <div class="tags"><span>Next.js</span><span>ASP.NET Core</span><span>Gemini</span><span>ABDM</span></div>
+          
+        </article>
+        <article class="card" data-cat="platform product" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>HealthResQ</h3><span class="pill st-public"><i></i>Collaboration</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public &middot; Co-built, tejo123-HUB</span></p>
+          <p class="d">A federated health-resource and supply-chain resilience platform. The operations and facility-systems direction is implemented: inventory ledger, hospital encounters, geography hierarchy and role-scoped terminals.</p>
+          <div class="tags"><span>FastAPI</span><span>PostgreSQL</span><span>PostGIS</span><span>Next.js</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/tejo123-HUB/HealthResQ" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="product" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>Tapcard</h3><span class="pill st-built"><i></i>Built</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Android app</span></p>
+          <p class="d">An Android business-card manager: a 3D card flip, camera OCR, AI field extraction, and instant sharing over NFC, QR and Nearby Connections. All eight planned build phases are complete.</p>
+          <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>NFC</span><span>ML Kit</span></div>
+          
+        </article>
+        <article class="card" data-cat="product" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Kart</h3><span class="pill st-prototype"><i></i>Prototype</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">A campus commerce prototype spanning food, documents, tasks, student resale and rentals, events, merchandise and services, with simulated KC credits. Includes a role-based Next.js app and a FastAPI backend demo.</p>
+          <div class="tags"><span>Next.js</span><span>FastAPI</span><span>TypeScript</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Kart" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="product" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>Graviton</h3><span class="pill st-design"><i></i>Architecture &amp; scaffold</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">A multi-platform finance, budget and asset manager that uses classical ML (forecasting, anomaly detection, Monte Carlo goals) rather than an LLM. Monorepo with a Next.js web app, a Tauri desktop shell and an Axum API.</p>
+          <div class="tags"><span>Next.js</span><span>Tauri</span><span>Rust</span><span>Axum</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Graviton" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="ai product" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>Colloseum</h3><span class="pill st-prototype"><i></i>Prototype</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">A frontend for an AI adversarial-reasoning arena: agent fighters attack and defend each other&#x27;s claims until the strongest argument survives. Live combat log, logic graph and archive, driven by a client-side mock engine.</p>
+          <div class="tags"><span>React 19</span><span>TypeScript</span><span>Tailwind v4</span><span>Zustand</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Colloseum" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="security product" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Xtron</h3><span class="pill st-design"><i></i>Early backend</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><span>Private &middot; Personal repository</span></p>
+          <p class="d">A Rust backend for a password-vault service: SRP login, WebAuthn passkeys, TOTP, vaults, items and files, and breach monitoring, with migrations and deployment configs in place.</p>
+          <div class="tags"><span>Rust</span><span>Axum</span><span>PostgreSQL</span><span>WebAuthn</span></div>
+          <div class="card-links"><span class="card-link muted">Not public</span></div>
+        </article>
+        <article class="card" data-cat="platform" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>Halo</h3><span class="pill st-design"><i></i>Blueprint</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Concept &amp; design</span></p>
+          <p class="d">A multi-cloud SaaS concept that automates non-development engineering work (diagnosis, FinOps, security, monitoring, QA) and hands code changes to engineers. The blueprint stands at 104 features across 15 components.</p>
+          <div class="tags"><span>Multi-cloud</span><span>Agents</span><span>FinOps</span></div>
+          
+        </article>
+        <article class="card" data-cat="platform security" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>W</h3><span class="pill st-design"><i></i>Specification</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg><span>Design documents</span></p>
+          <p class="d">A specification for a Linux-based, Ubuntu-compatible desktop OS: an OS-level broker between AI agents and the system, a credential vault, an OOXML-native office suite and Windows-application compatibility. Seventeen-plus documents.</p>
+          <div class="tags"><span>Linux</span><span>Rust</span><span>Wine</span><span>VFIO</span></div>
+          
+        </article>
+        <article class="card" data-cat="platform" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>devtools</h3><span class="pill st-built"><i></i>Working</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><span>Private &middot; Halcyon Technologies</span></p>
+          <p class="d">Internal tooling for Halcyon systems. epb reads real frontend and backend code to catch missing, unused and drifting endpoints; a task board coordinates work. Released under the PolyForm Noncommercial licence.</p>
+          <div class="tags"><span>Node.js</span><span>Developer tools</span><span>CI</span></div>
+          <div class="card-links"><span class="card-link muted">Not public</span></div>
+        </article>
+        <article class="card" data-cat="ai oss" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>prompt-complexity-analyzer</h3><span class="pill st-public"><i></i>On PyPI</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">A local ML utility that scores prompt complexity from 1 to 10 and recommends a model tier without any API calls. Includes a CLI plus dataset-generation and training scripts.</p>
+          <div class="tags"><span>Python</span><span>ML</span><span>CLI</span><span>PyPI</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/prompt-complexity-analyzer" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a><a class="card-link" href="https://pypi.org/project/prompt-complexity-analyzer/" target="_blank" rel="noopener noreferrer">PyPI<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="ai oss" data-tilt data-r style="--d:90ms">
+          <div class="card-top"><h3>Doc_Classifier</h3><span class="pill st-public"><i></i>Completed</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">An offline file organiser that classifies and sorts documents, images and media with local models, so nothing leaves the machine.</p>
+          <div class="tags"><span>Python</span><span>TensorFlow Lite</span><span>Privacy-first</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Doc_Classifier" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="ai oss" data-tilt data-r style="--d:180ms">
+          <div class="card-top"><h3>Claude Skills</h3><span class="pill st-public"><i></i>Open source</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">Mini-documentation on how Claude Agent Skills work, alongside the 47+ custom skills I use for research, architecture documents, frontend design and verification.</p>
+          <div class="tags"><span>Claude Skills</span><span>Agents</span><span>Documentation</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Claude_Skills" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        <article class="card" data-cat="product" data-tilt data-r style="--d:0ms">
+          <div class="card-top"><h3>ThinkStrike</h3><span class="pill st-archived"><i></i>Archived</span></div>
+          <p class="vis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg><span>Public repository</span></p>
+          <p class="d">A modular learning platform for AI-powered quiz generation, student feedback, teacher dashboards and admin management.</p>
+          <div class="tags"><span>FastAPI</span><span>Flutter</span><span>Education</span></div>
+          <div class="card-links"><a class="card-link" href="https://github.com/Ruthvik-Anne/Think_Strike" target="_blank" rel="noopener noreferrer">View repository<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+        </article>
+        </div>
       </div>
     </section>
 
-    <section class="section section-split">
-      <div class="info-panel">
-        <div class="section-head compact">
-          <div>
-            <p class="eyebrow">Capabilities</p>
-            <h2>Skills</h2>
-          </div>
+    <!-- 02 ORGS -->
+    <section class="section" id="orgs">
+      <div class="wrap">
+        <div class="sec-head" data-r>
+          <span class="sec-no" aria-hidden="true">02</span>
+          <h2 data-split>Teams I build with</h2>
+          <p class="sec-note">Two GitHub organisations, one active and one archived.</p>
         </div>
-
-        <div class="skill-group">
-          <h3>Engineering</h3>
-          <div class="skill-tags">
-            <span>C# / .NET</span>
-            <span>HTML / CSS</span>
-            <span>SQL</span>
-            <span>C / C++</span>
-            <span>Python</span>
-          </div>
+        <div class="orgs">
+          <article class="org dark" data-r="left">
+            <h3>Halcyon Technologies</h3>
+            <p class="org-role">Member &middot; three-person team &middot; active</p>
+            <p class="soft">The home of Awan, the air-gapped AI platform, and Dawn, the container and networking substrate beneath it, plus the legal-OS Armo and the internal devtools that keep the stack honest.</p>
+            <div class="chips">
+              <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>Awan</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>Dawn</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>Armo</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>devtools</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>SAHE-DIGITAL-TWIN</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg>.github</span>
+            </div>
+            <div class="card-links org-links"><a class="card-link" style="color:#fff;border-color:rgba(255,255,255,.4)" href="https://github.com/Halcyon-Technologies" target="_blank" rel="noopener noreferrer">Organisation profile <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></div>
+          </article>
+          <article class="org" data-r="right">
+            <span class="stamp" aria-label="Archived">Archived</span>
+            <h3>Denvire Tech</h3>
+            <p class="org-role">Member &middot; Jul&ndash;Aug 2026</p>
+            <p class="soft">A multi-tenant campus-digitalisation SaaS for Indian colleges, with portals for students, teachers, admins and parents. Eleven repositories spanning an ASP.NET Core backend, React web apps, an Avalonia desktop client and AI services. Since superseded and archived.</p>
+            <div class="chips">
+              <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>campus-platform</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>campus-backend</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>campus-admin-web</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>campus-student-desktop</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>campus-ai-services</span><span>+ 6 more</span>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="skill-group">
-          <h3>Artificial Intelligence</h3>
-          <div class="skill-tags">
-            <span>Artificial Intelligence</span>
-            <span>Agentic AI</span>
-            <span>Retrieval-Augmented Generation (RAG)</span>
-            <span>Machine Learning</span>
-            <span>Large Language Model Fine-Tuning</span>
-            <span>Large Language Models</span>
-            <span>Multi-Agent Systems</span>
-            <span>Ollama / vLLM</span>
+    <!-- 03 TIMELINE -->
+    <section class="section" id="journey">
+      <div class="wrap">
+        <div class="sec-head" data-r>
+          <span class="sec-no" aria-hidden="true">03</span>
+          <h2 data-split>Build log, 2026</h2>
+          <p class="sec-note">Reconstructed from repository activity, Hugging Face publish dates and project notes. Months are when the work was visibly under way, not launch dates.</p>
+        </div>
+        <ol class="timeline" id="timeline" style="padding-left:0;list-style:none">
+      <li class="tl-item" data-r="left">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Mar 2026</time><h3>NEXUS begins</h3><p>A local, sovereign assistant that understands Telugu, English and Tenglish, designed for a no-GPU laptop.</p></div>
+      </li>
+      <li class="tl-item" data-r="right">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Apr 2026</time><h3>Three builds on paper</h3><p>Tapcard, Trobo Health and the Aegis firewall each get a full plan; the project inventory is written down.</p></div>
+      </li>
+      <li class="tl-item" data-r="left">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>May 2026</time><h3>NEXUS goes multi-agent</h3><p>Manager-worker system, a LoRA fine-tune and an SFT dataset pipeline for a rented L4 GPU.</p></div>
+      </li>
+      <li class="tl-item" data-r="right">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Jun 2026</time><h3>Open-source push</h3><p>prompt-complexity-analyzer reaches PyPI, Claude Skills and Doc_Classifier go public, and this site is redesigned.</p></div>
+      </li>
+      <li class="tl-item" data-r="left">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Jul 2026</time><h3>Graviton and Denvire Tech</h3><p>The finance-manager monorepo appears, and a campus-platform team spins up under Denvire Tech.</p></div>
+      </li>
+      <li class="tl-item" data-r="right">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Aug 2026</time><h3>Campus platform sprint</h3><p>Eleven repositories across backend, web, desktop, parent portal and AI services, plus HealthResQ and Colloseum.</p></div>
+      </li>
+      <li class="tl-item" data-r="left">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Sep 2026</time><h3>Halcyon and SIH</h3><p>Armo and the Halcyon repositories begin; AWAN is entered into Smart India Hackathon 2026 as team Akatsuki.</p></div>
+      </li>
+      <li class="tl-item" data-r="right">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Oct 2026</time><h3>Agents and kernels</h3><p>Kart and Zero land, Solomon&#x27;s causal research runs, and the kernel-C datasets are published to Hugging Face.</p></div>
+      </li>
+      <li class="tl-item" data-r="left">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="box"><time>Nov 2026</time><h3>Awan, Dawn, Prani</h3><p>Halcyon&#x27;s Awan, Dawn and devtools are under active commits, the language-free thought paper takes shape, and weight-editing experiments begin.</p></div>
+      </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 LAB -->
+    <section class="section" id="lab">
+      <div class="wrap">
+        <div class="sec-head" data-r>
+          <span class="sec-no" aria-hidden="true">04</span>
+          <h2 data-split>Research notebook</h2>
+          <p class="sec-note">Threads that are not products yet: experiments, specifications and papers. Each is at the design or experiment stage unless the card above says otherwise.</p>
+        </div>
+        <div class="term" data-r="scale">
+          <div class="term-bar"><i></i><i></i><i></i><span>~/lab &mdash; bash</span></div>
+          <div class="term-body" id="term">
+          <p class="t-line cmd" data-type="ls ~/lab"><span class="p">ruthvik@lambda1</span><span class="c">:</span><span class="k">~</span><span class="c">$ </span><span class="typed">ls ~/lab</span></p>
+          <p class="t-line"><span class="k">prani/          </span><span class="c">language-free population learning, paper plus Kaggle runs</span></p>
+          <p class="t-line"><span class="k">solomon/        </span><span class="c">causal discovery: Order-MCMC with sBIC, tetrad proxy tests in C</span></p>
+          <p class="t-line"><span class="k">brainos/        </span><span class="c">six-node belief-propagation memory, adversarial audit A-04</span></p>
+          <p class="t-line"><span class="k">sol_v1/         </span><span class="c">HOPE and HRM/TRM fusion, novelty checked before building</span></p>
+          <p class="t-line"><span class="k">weight-edit/    </span><span class="c">editing a 3B model&#x27;s weights directly, Lean-graded</span></p>
+          <p class="t-line"><span class="k">utake/          </span><span class="c">post-quantum key exchange, FALCON-512 auth, paper draft</span></p>
+          <p class="t-line"><span class="k">specter/        </span><span class="c">covert-channel workbench, six steganography algorithms</span></p>
+          <p class="t-line"><span class="k">coreguard/      </span><span class="c">code provenance: watermark and birthmark layers</span></p>
+          <p class="t-line"><span class="k">praxis/         </span><span class="c">energy and motor health for MSMEs, Hailo edge inference</span></p>
+          <p class="t-line"><span class="k">nave/           </span><span class="c">India-first navigation, Vijayawada MVP roadmap</span></p>
+          <p class="t-line"><span class="k">aegis/          </span><span class="c">Rust firewall: nfqueue, then eBPF, then ML sidecar</span></p>
+          <p class="t-line"><span class="k">codecs/         </span><span class="c">fractal and JPEG-LS-style image codecs, fuzz-tested</span></p>
+          <p class="t-line cmd" data-type="ls ~/side-builds"><span class="p">ruthvik@lambda1</span><span class="c">:</span><span class="k">~</span><span class="c">$ </span><span class="typed">ls ~/side-builds</span></p>
+          <p class="t-line"><span class="k">medicheck/      </span><span class="c">medicine-safety PWA: interactions and renal dosing</span></p>
+          <p class="t-line"><span class="k">delta/          </span><span class="c">offline-first expense tracker and vault on .NET 10</span></p>
+          <p class="t-line"><span class="k">intent-analyzer/</span><span class="c">DeBERTa plus LLM hybrid intent library</span></p>
+          <p class="t-line cmd" data-type=""><span class="p">ruthvik@lambda1</span><span class="c">:</span><span class="k">~</span><span class="c">$ </span><span class="t-caret"></span></p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="info-panel">
-        <div class="section-head compact">
-          <div>
-            <p class="eyebrow">Background</p>
-            <h2>Education</h2>
-          </div>
+    <!-- 05 STACK -->
+    <section class="section" id="stack">
+      <div class="wrap">
+        <div class="sec-head" data-r>
+          <span class="sec-no" aria-hidden="true">05</span>
+          <h2 data-split>Stack and education</h2>
+          <p class="sec-note">Skills are listed for what I have actually built with.</p>
         </div>
-
-        <ul class="education-list">
-          <li>
-            <span class="education-title">Siddhartha Academy of Higher Education</span>
-            <span class="education-meta">B.Tech in Computer Science and Engineering Â· 2024â€“Present</span>
-          </li>
-          <li>
-            <span class="education-title">Graviity Junior College</span>
-          </li>
-          <li>
-            <span class="education-title">Westberry Tenali</span>
-          </li>
+        <div class="skills">
+          <div class="skill-group" data-r><h3>Engineering</h3><div class="skill-tags"><span style="--i:0">C# / .NET</span><span style="--i:1">Python</span><span style="--i:2">C / C++</span><span style="--i:3">SQL</span><span style="--i:4">HTML / CSS</span></div></div>
+          <div class="skill-group" data-r style="--d:100ms"><h3>Artificial intelligence</h3><div class="skill-tags"><span style="--i:0">Agentic AI</span><span style="--i:1">Multi-agent systems</span><span style="--i:2">LLM fine-tuning (LoRA)</span><span style="--i:3">Distillation</span><span style="--i:4">Retrieval-augmented generation</span><span style="--i:5">Machine learning</span><span style="--i:6">Ollama / vLLM</span><span style="--i:7">Dataset engineering</span></div></div>
+          <div class="skill-group" data-r style="--d:200ms"><h3>Systems and research</h3><div class="skill-tags"><span style="--i:0">Systems architecture</span><span style="--i:1">API and protocol design</span><span style="--i:2">Threat modelling</span><span style="--i:3">Causal inference</span><span style="--i:4">Claude Skills authoring</span><span style="--i:5">Technical specification</span></div></div>
+        </div>
+        <ul class="edu" style="margin-top:48px">
+          <li data-r><time>2025 &ndash; 2029</time><div><b>Siddhartha Academy of Higher Education</b><span>B.Tech in Computer Science and Engineering, Vijayawada</span></div></li>
+          <li data-r><time>Intermediate &middot; 2025</time><div><b>Graviity Junior College</b></div></li>
+          <li data-r><time>Class X &middot; 2023</time><div><b>Westberry Tenali</b></div></li>
         </ul>
       </div>
     </section>
 
-    <footer class="footer-text">Â© 2026 Ruthvik Anne</footer>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="eyebrow" data-r>Open to research collaborations, internships and ambitious product work</p>
+        <h2 data-r="clip">Let&rsquo;s <em>build.</em></h2>
+        <p class="lede" data-r style="--d:120ms">If you are working on sovereign AI, agent systems, or anything that has to be verifiably correct, I would like to hear about it.</p>
+        <div class="actions" data-r style="--d:200ms">
+          <a class="btn" href="mailto:anneruthvik9@gmail.com" data-magnet>anneruthvik9@gmail.com</a>
+          <a class="btn ghost" href="https://github.com/Ruthvik-Anne" target="_blank" rel="noopener noreferrer" data-magnet>GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          <a class="btn ghost" href="https://huggingface.co/ruthvikanne" target="_blank" rel="noopener noreferrer" data-magnet>Hugging Face <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          <a class="btn ghost" href="https://github.com/Halcyon-Technologies" target="_blank" rel="noopener noreferrer" data-magnet>Halcyon <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+        </div>
+        <div class="footer-text"><span class="foot-left"><img class="foot-mark" src="Images/ra-mark-white.png" alt="" width="22" height="22"><span class="footer-year">&copy; 2026 Ruthvik Anne</span></span><span>Built by hand. Moves unless your system asks it not to.</span></div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
-
