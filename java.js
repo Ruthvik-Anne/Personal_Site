@@ -23,6 +23,7 @@
      downgrade for the session, then watches real frame times and steps DOWN (never up) if the
      device hitches. Tiers only make motion cheaper (fewer particles, no blur, lower shader
      resolution); they never switch animation off. ?perf=high|mid|low forces a tier for testing. */
+  var FX = { rgb: "11,11,12", acc: "154,79,43" }; // canvas colours; setupTheme swaps them for dark
   var perf = (function () {
     var order = ["high", "mid", "low"], listeners = [], tier = "high";
     var nav = navigator, conn = nav.connection || {};
@@ -235,6 +236,107 @@
     }, 3400);
   }
 
+  /* ---------- theme (light/dark) with circular reveal ---------- */
+  var NATIVE_SD = !!(window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()"));
+  function ripple(x, y, R) {
+    var D = R * 2;
+    [0, 110, 230].forEach(function (delay, i) {
+      var el = doc.createElement("div");
+      el.className = "theme-ripple";
+      el.style.cssText = "left:" + (x - R) + "px;top:" + (y - R) + "px;width:" + D + "px;height:" + D + "px";
+      doc.body.appendChild(el);
+      var a = el.animate(
+        [{ transform: "scale(0)", opacity: 0.9 - i * 0.2 }, { transform: "scale(1)", opacity: 0 }],
+        { duration: 700 + i * 140, delay: delay, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" }
+      );
+      a.onfinish = function () { el.remove(); };
+    });
+  }
+  function setupTheme() {
+    var btn = $("#theme-toggle");
+    var root = doc.documentElement, meta = $('meta[name="theme-color"]');
+    function apply(t) {
+      root.setAttribute("data-theme", t);
+      FX.rgb = t === "dark" ? "242,242,242" : "11,11,12";
+      FX.acc = t === "dark" ? "215,154,125" : "154,79,43";
+      if (meta) meta.setAttribute("content", t === "dark" ? "#121214" : "#F2F2F2");
+      if (btn) btn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
+      window.dispatchEvent(new Event("ra-theme"));
+    }
+    apply(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      try { localStorage.setItem("ra-theme", next); } catch (e) {}
+      if (!doc.startViewTransition || reduce || perf.tier() === "low") { apply(next); return; }
+      var r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      var R = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      root.classList.add("theme-vt");
+      ripple(x, y, R);
+      var vt = doc.startViewTransition(function () { apply(next); });
+      vt.ready.then(function () {
+        root.animate(
+          { clipPath: ["circle(0px at " + x + "px " + y + "px)", "circle(" + R + "px at " + x + "px " + y + "px)"] },
+          { duration: 650, easing: "cubic-bezier(.22,1,.36,1)", pseudoElement: "::view-transition-new(root)" }
+        );
+      }).catch(function () {});
+      vt.finished.then(function () { root.classList.remove("theme-vt"); }, function () { root.classList.remove("theme-vt"); });
+    });
+  }
+
+  /* ---------- card details: shared-element morph into a dialog ---------- */
+  function setupDetail() {
+    var dlg = $("#detail");
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    var root = doc.documentElement, panel = $(".detail-panel", dlg), last = null, busy = false;
+    function canVT() { return !!doc.startViewTransition && !reduce && perf.tier() !== "low"; }
+    function fill(card) {
+      $("#detail-title").textContent = $("h3", card).textContent;
+      var pill = $(".pill", card), dp = $("#detail-pill");
+      dp.className = pill.className; dp.innerHTML = pill.innerHTML;
+      var vis = $(".vis", card); $("#detail-vis").innerHTML = vis ? vis.outerHTML : "";
+      $("#detail-body").textContent = $(".more-text", card).textContent;
+      $("#detail-tags").innerHTML = $(".tags", card).innerHTML;
+      var l = $(".card-links", card); $("#detail-links").innerHTML = l ? l.innerHTML : "";
+    }
+    function done(el) { if (el) el.style.viewTransitionName = ""; panel.style.viewTransitionName = ""; root.classList.remove("vt-card"); busy = false; }
+    function open(card) {
+      if (busy || dlg.open) return;
+      last = card; fill(card); busy = true;
+      root.classList.add("dialog-open");
+      if (!canVT()) { dlg.showModal(); busy = false; return; }
+      root.classList.add("vt-card");
+      card.style.viewTransitionName = "detail";
+      var t = doc.startViewTransition(function () {
+        card.style.viewTransitionName = ""; panel.style.viewTransitionName = "detail"; dlg.showModal();
+      });
+      t.finished.then(function () { done(card); }, function () { done(card); });
+    }
+    function close() {
+      if (busy || !dlg.open) return;
+      var card = last;
+      function shut() { dlg.close(); }
+      if (!canVT() || !card || card.hidden) { shut(); return; }
+      busy = true; root.classList.add("vt-card");
+      panel.style.viewTransitionName = "detail";
+      var t = doc.startViewTransition(function () { panel.style.viewTransitionName = ""; shut(); card.style.viewTransitionName = "detail"; });
+      t.finished.then(function () { done(card); }, function () { done(card); });
+    }
+    dlg.addEventListener("close", function () {
+      root.classList.remove("dialog-open");
+      var b = last && $(".card-more", last); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} }
+    });
+    dlg.addEventListener("cancel", function (e) { e.preventDefault(); close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+    $(".detail-x", dlg).addEventListener("click", close);
+    $$("#grid .card").forEach(function (card) {
+      card.setAttribute("data-more", "");
+      card.addEventListener("click", function (e) { if (e.target.closest("a, button")) return; open(card); });
+      var b = $(".card-more", card);
+      if (b) b.addEventListener("click", function () { open(card); });
+    });
+  }
+
   /* ---------- nav + scroll progress ---------- */
   function setupNav() {
     var bar = $("#progress");
@@ -245,7 +347,10 @@
       requestAnimationFrame(function () {
         ticking = false;
         var max = doc.documentElement.scrollHeight - window.innerHeight;
-        if (bar && max > 0) bar.style.setProperty("--sp", (window.scrollY / max).toFixed(4));
+        if (!NATIVE_SD) {
+          if (bar && max > 0) bar.style.setProperty("--sp", (window.scrollY / max).toFixed(4));
+          doc.documentElement.style.setProperty("--hy", clamp(window.scrollY / (window.innerHeight * 0.9), 0, 1).toFixed(3));
+        }
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -331,16 +436,12 @@
     draw(performance.now());
     cv.classList.add("on");
     if (reduced) return; // one still frame
-    var hero = cv.parentElement;
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); }, { threshold: 0 }).observe(hero);
-    }
     doc.addEventListener("visibilitychange", start);
     perf.on(function (t) { if (t === "low") { visible = false; cv.remove(); } });
     if (perf.tier() === "low") { cv.remove(); return; }
     cv.addEventListener("webglcontextlost", function (e) { e.preventDefault(); cv.remove(); }, false);
     if (window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
-      hero.addEventListener("pointermove", function (e) {
+      window.addEventListener("pointermove", function (e) {
         var r = cv.getBoundingClientRect(), asp = r.width / r.height;
         ptr.tx = ((e.clientX - r.left) / r.width - 0.5) * asp;
         ptr.ty = -((e.clientY - r.top) / r.height - 0.5);
@@ -371,7 +472,8 @@
     if (fine && !reduced) {
       window.addEventListener("wheel", function (e) {
         if (e.ctrlKey || e.defaultPrevented || perf.tier() === "low") return;
-        if (e.target.closest && e.target.closest(".dock, .term, textarea, select")) return;
+        if (e.target.closest && e.target.closest(".dock, .term, textarea, select, dialog")) return;
+        if (doc.documentElement.classList.contains("dialog-open")) return;
         e.preventDefault();
         var dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
         if (!active) { cur = window.scrollY; target = cur; }
@@ -408,7 +510,22 @@
     var dock = $(".dock");
     if (!dock) return;
     var cue = $("#cue");
-    function upd() { dock.classList.toggle("at-top", window.scrollY < 40); if (cue) cue.classList.toggle("gone", window.scrollY > 80); }
+    var blockers = $$(".hero .wrap .btn, .hero .wrap .stat b, .hero .wrap .stat span, .hero .wrap .stat small, .hero .wrap .lede, .hero .wrap .role, .hero .wrap h1, .hero .wrap .eyebrow");
+    function dodge() {
+      if (!cue || window.scrollY > 80) return;
+      var c = cue.getBoundingClientRect(), hit = false, m = 8;
+      function test(r) { if (r.width && r.height && r.left < c.right + m && r.right > c.left - m && r.top < c.bottom + m && r.bottom > c.top - m) hit = true; }
+      blockers.forEach(function (b) {
+        if (hit) return;
+        if (b.classList.contains("btn")) { test(b.getBoundingClientRect()); return; }
+        var rg = doc.createRange(); rg.selectNodeContents(b);
+        var rs = rg.getClientRects(); for (var i = 0; i < rs.length; i++) test(rs[i]);
+      });
+      cue.classList.toggle("dodge", hit);
+    }
+    function upd() { dock.classList.toggle("at-top", window.scrollY < 40); if (cue) cue.classList.toggle("gone", window.scrollY > 80); dodge(); }
+    window.addEventListener("resize", dodge, { passive: true });
+    setTimeout(dodge, 2200);
     window.addEventListener("scroll", upd, { passive: true });
     upd();
   }
@@ -440,6 +557,7 @@
       while (nodes.length < n) nodes.push(mk());
       nodes.length = n;
       if (reduce) draw(0, true);
+      window.addEventListener("ra-theme", function () { if (reduce) draw(0, true); });
     }
 
     function draw(dt, still) {
@@ -464,7 +582,7 @@
           dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
           if (d < linkD * linkD) {
             al = (1 - Math.sqrt(d) / linkD) * 0.2;
-            ctx.strokeStyle = "rgba(11,11,12," + al.toFixed(3) + ")";
+            ctx.strokeStyle = "rgba(" + FX.rgb + "," + al.toFixed(3) + ")";
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
             edges.push(i, j);
           }
@@ -476,12 +594,12 @@
           dx = mouse.x - a.x; dy = mouse.y - a.y; d = Math.sqrt(dx * dx + dy * dy);
           if (d < 200) {
             al = (1 - d / 200) * 0.6;
-            ctx.strokeStyle = "rgba(154,79,43," + al.toFixed(3) + ")";
+            ctx.strokeStyle = "rgba(" + FX.acc + "," + al.toFixed(3) + ")";
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
           }
         }
       }
-      ctx.fillStyle = "rgba(11,11,12,0.5)";
+      ctx.fillStyle = "rgba(" + FX.rgb + ",0.5)";
       for (i = 0; i < nodes.length; i++) {
         a = nodes[i];
         ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
@@ -625,7 +743,39 @@
     var tl = $("#timeline");
     if (!tl) return;
     var items = $$(".tl-item", tl);
-    var ticking = false;
+    var ticking = false, NS = "http://www.w3.org/2000/svg";
+    var svg = null;
+    function build() {
+      var W = tl.clientWidth, H = tl.clientHeight;
+      if (!W || !H) return;
+      var mobile = window.matchMedia("(max-width: 860px)").matches;
+      var amp = parseFloat(getComputedStyle(tl).getPropertyValue("--amp")) || 28;
+      var cx = mobile ? 14 : W / 2;
+      var tr = tl.getBoundingClientRect(), pts = [[cx, 0]];
+      items.forEach(function (it, i) {
+        var d = $(".dot", it), r = d.getBoundingClientRect();
+        var x = cx + (i % 2 === 0 ? -amp : amp);
+        it.style.setProperty("--dx", x + "px");
+        pts.push([x, r.top - tr.top + r.height / 2]);
+      });
+      pts.push([cx, H]);
+      var dstr = "M" + pts[0][0] + "," + pts[0][1];
+      for (var k = 1; k < pts.length; k++) {
+        var a0 = pts[k - 1], a1 = pts[k], my = (a0[1] + a1[1]) / 2;
+        dstr += " C" + a0[0] + "," + my + " " + a1[0] + "," + my + " " + a1[0] + "," + a1[1];
+      }
+      if (!svg) {
+        svg = doc.createElementNS(NS, "svg");
+        svg.setAttribute("class", "tl-curve"); svg.setAttribute("aria-hidden", "true");
+        svg.innerHTML = '<defs><linearGradient id="tlGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8C97A"/><stop offset=".5" stop-color="#C9876A"/><stop offset="1" stop-color="#9A4F2B"/></linearGradient></defs><path class="base"/><path class="fill" pathLength="1"/>';
+        tl.insertBefore(svg, tl.firstChild);
+        tl.classList.add("has-curve");
+      }
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      svg.setAttribute("preserveAspectRatio", "none");
+      var g = svg.querySelector("linearGradient"); g.setAttribute("y2", H);
+      $$("path", svg).forEach(function (p) { p.setAttribute("d", dstr); });
+    }
     function update() {
       ticking = false;
       var r = tl.getBoundingClientRect();
@@ -638,8 +788,13 @@
       });
     }
     function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    var rt = 0;
+    function rebuild() { clearTimeout(rt); rt = setTimeout(function () { build(); req(); }, 120); }
     window.addEventListener("scroll", req, { passive: true });
-    window.addEventListener("resize", req, { passive: true });
+    window.addEventListener("resize", rebuild, { passive: true });
+    if ("ResizeObserver" in window) new ResizeObserver(rebuild).observe(tl);
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(rebuild);
+    build();
     update();
   }
 
@@ -698,7 +853,7 @@
     if (reduce || !loader) { if (loader) loader.classList.add("gone"); finish(); return; }
 
     var n = $("#loader-n");
-    var dur = first ? 1500 : 450;
+    var dur = first ? 1500 : 1000; // black counter screen: 1.5s on the first visit, 1s on repeat visits
     var t0 = performance.now();
     (function step(now) {
       var p = clamp((now - t0) / dur, 0, 1);
@@ -721,7 +876,9 @@
     safe(splitHeadings);
     safe(prepHero);
     safe(setYear);
+    safe(setupTheme);
     safe(setupNav);
+    safe(setupDetail);
     safe(setupCanvas);
     safe(setupWater);
     safe(setupSmooth);
