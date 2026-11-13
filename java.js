@@ -407,7 +407,8 @@
   function setupHeader() {
     var dock = $(".dock");
     if (!dock) return;
-    function upd() { dock.classList.toggle("at-top", window.scrollY < 40); }
+    var cue = $("#cue");
+    function upd() { dock.classList.toggle("at-top", window.scrollY < 40); if (cue) cue.classList.toggle("gone", window.scrollY > 80); }
     window.addEventListener("scroll", upd, { passive: true });
     upd();
   }
