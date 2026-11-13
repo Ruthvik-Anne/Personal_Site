@@ -1,0 +1,16 @@
+# Ruthvik Anne (also written Anne Ruthvik)
+
+> Ruthvik Anne is a software developer based in Vijayawada, India, and a B.Tech CSE student (2025-2029) at Siddhartha Academy of Higher Education. He builds AI platforms and agent systems, model-training pipelines, full-stack web apps, Android apps and security-first backends.
+
+## Main page
+- [Portfolio](https://ruthvik-anne.github.io/Personal_Site/): projects, organisations, 2026 build log, research notes, stack and contact.
+
+## Profiles
+- [GitHub: Ruthvik-Anne](https://github.com/Ruthvik-Anne): public repositories.
+- [GitHub: Halcyon Technologies](https://github.com/Halcyon-Technologies): organisation he works in (Awan, Dawn, Armo, devtools).
+- [Hugging Face: ruthvikanne](https://huggingface.co/ruthvikanne): public datasets.
+
+## Facts
+- Open to: internships, research collaborations and product work (web and Android apps, AI and LLM integration, backend services).
+- Stack: Python, Rust, Go, C, C#/.NET, Kotlin, TypeScript, React, Next.js, FastAPI, PostgreSQL.
+- Many projects are private or at design stage; the site labels each status literally ("Specs", "Blueprint", "Prototype", "Built").

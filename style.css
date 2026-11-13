@@ -671,3 +671,13 @@ html[data-perf="low"] .tl-curve .fill { filter: none; }
 /* ripple rings on theme change */
 .theme-ripple { position: fixed; z-index: 130; border-radius: 50%; pointer-events: none; will-change: transform, opacity;
   background: radial-gradient(circle closest-side, transparent 88%, rgba(215, 154, 125, 0.75) 96%, transparent 100%); }
+
+/* ---------- at a glance (plain facts) ---------- */
+.facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; border-top: 1px solid var(--line); }
+.facts > div { padding: 20px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.facts dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 8px; }
+.facts dd { margin: 0; color: var(--ink); line-height: 1.65; overflow-wrap: break-word; }
+.facts a { border-bottom: 1px solid var(--line); transition: border-color 0.25s, color 0.25s; }
+.facts a:hover { border-color: var(--copper); color: var(--copper-deep); }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+.nw { white-space: nowrap; }
